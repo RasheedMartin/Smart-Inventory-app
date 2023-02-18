@@ -1,0 +1,47 @@
+<MainWidget>
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "Smart Inventory Management App"
+			font_size:32
+			color: 'red'
+
+
+		GridLayout:
+			cols:2
+
+			Label:
+				text: "Create List"
+				font_size:20
+			CheckBox:
+				group: "Actions"
+				on_active: root.checkbox_click(self, self.active, "Create List")
+
+			Label:
+				text: "Edit List"
+				font_size:20
+			CheckBox:
+				group: "Actions"
+				on_active: root.checkbox_click(self, self.active, "Edit List")
+
+			Label:
+				text: "Stock Prediction"
+				font_size:20
+			CheckBox:
+				group: "Actions"
+				on_active: root.checkbox_click(self, self.active, "Stock Prediction")
+
+		Button:
+			text: "Submit"
+			font_size:32
+			size_hint: (.5, .3)
+			pos_hint: {'center_x': .5, 'center_y': .5}
+			background_color: 'green'
+			color: 'white'
+			on_press: root.on_press_button()
+
+
+
+
