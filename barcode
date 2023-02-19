@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import pyzbar.pyzbar as pyzbar
+from webscraping import main
 
 
 # Define a function to capture video from your camera and process each frame
@@ -29,7 +30,8 @@ def scan_barcodes():
 
 
 # Call the function to start scanning barcodes and save the result to a variable
-barcode_result = scan_barcodes() # Returns a String
-print(barcode_result)  # Print the decoded barcode data
+# barcode_result = scan_barcodes() # Returns a String
+barcode_result = '01201303'
+main(barcode_result)  # Print the decoded barcode data
 
 # 075610445107 Sulfur8 Medicated Example
