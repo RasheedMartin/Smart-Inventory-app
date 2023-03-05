@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Added in the webscraping file">
+    <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Recent App Change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/barcode" beforeDir="false" afterPath="$PROJECT_DIR$/barcode" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscraping.py" beforeDir="false" afterPath="$PROJECT_DIR$/webscraping.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,11 +22,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -234,6 +231,8 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.barcode" />
+        <item itemvalue="Python.jk" />
         <item itemvalue="Python.jk" />
         <item itemvalue="Python.barcode" />
       </list>
