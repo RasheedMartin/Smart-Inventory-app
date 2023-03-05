@@ -27,7 +27,7 @@ def scan_barcodes():
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     cap.release()
-    cv2.destroyAllWindows()
+    #cv2.destroyAllWindows()
     return barcode_data  # Return the decoded barcode data`
 
 
@@ -61,6 +61,3 @@ def run():
 
     print(f"The name of item is {name}, The price of {name} is {price}")
 
-
-if __name__ == '__main__':
-    run()

@@ -1,4 +1,5 @@
 from barcode_reader import run
+
 try:
     from kivy.app import App
 except ImportError:
@@ -8,8 +9,6 @@ except ImportError:
     from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-from kivy.uix.textinput import TextInput
-from kivy.uix.widget import Widget
 
 
 class MainWindow(Screen):
@@ -46,6 +45,7 @@ class MainWindow(Screen):
 class SecondWindow(Screen):
 
     def on_release_button(self):
+        run()
         self.manager.current = 'third'
         pass
 
