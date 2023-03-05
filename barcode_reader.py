@@ -23,41 +23,33 @@ def scan_barcodes():
             barcode_data = obj.data.decode('utf-8')  # Save the decoded data to the variable
         # Display the processed frame
         cv2.imshow("Barcode Scanner", frame)
+        if barcode_data is not None:
+            # Website to use for searching barcode values
+            url = "https://api.barcodespider.com/v1/lookup"
+            querystring = {"upc": barcode_data}
+
+            headers = {
+                'token': "d970f9f75b5fb1d6c3a5",
+                'Host': "api.barcodespider.com",
+                'Accept-Encoding': "gzip, deflate",
+                'Connection': "keep-alive",
+                'cache-control': "no-cache"
+            }
+
+            response = requests.request("GET", url, headers=headers, params=querystring)
+            data = response.json()
+
+            prince = response.text
+
+            data_dict = json.loads(prince)
+            if data_dict['code'][0] == 404:
+                break
         # Press 'q' to quit
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     cap.release()
-    #cv2.destroyAllWindows()
-    return barcode_data  # Return the decoded barcode data`
+    # cv2.destroyAllWindows()
+    # Return the decoded barcode data`
 
 
-def run():
-    # Call the function to start scanning barcodes and save the result to a variable
-    barcode_result = scan_barcodes()
-    print(barcode_result)  # Print the decoded barcode data
-
-    # Website to use for searching barcode values
-    url = "https://api.barcodespider.com/v1/lookup"
-    querystring = {"upc": barcode_result}
-
-    headers = {
-        'token': "d970f9f75b5fb1d6c3a5",
-        'Host': "api.barcodespider.com",
-        'Accept-Encoding': "gzip, deflate",
-        'Connection': "keep-alive",
-        'cache-control': "no-cache"
-    }
-
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    data = response.json()
-
-    prince = response.text
-
-    data_dict = json.loads(prince)
-
-    # Extract the price from the dictionary
-    price = data_dict['Stores'][0]['price']
-    name = data_dict['item_attributes']['title']
-
-    print(f"The name of item is {name}, The price of {name} is {price}")
 

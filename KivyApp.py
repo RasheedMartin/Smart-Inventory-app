@@ -1,4 +1,4 @@
-from barcode_reader import run
+from barcode_reader import scan_barcodes
 
 try:
     from kivy.app import App
@@ -45,14 +45,18 @@ class MainWindow(Screen):
 class SecondWindow(Screen):
 
     def on_release_button(self):
-        run()
-        self.manager.current = 'third'
+        temp = scan_barcodes()
+        # if temp is None:
+        self.manager.current = 'third' # form
+
+        #database(temp)
         pass
 
 
 class ThirdWindow(Screen):
 
     def on_release_button1(self):
+        #database(temp)
         pass
 
 
