@@ -1,4 +1,11 @@
-<MainWidget>
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+
+<MainWindow>
+    name: "main"
+
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -42,6 +49,63 @@
 			color: 'white'
 			on_press: root.on_press_button()
 
+<SecondWindow>
+    name: "second"
 
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
 
+		Label:
+			text: "Add List"
+			font_size:32
+			color: 'red'
 
+        GridLayout:
+			cols:2
+
+            Label:
+                text: "Enter List Name"
+
+            TextInput:
+                id: newlist
+                multiline: False
+
+		Button:
+			text: "Submit"
+			font_size:32
+			size_hint: (.5, .3)
+			pos_hint: {'center_x': .5, 'center_y': .5}
+			background_color: 'green'
+			color: 'white'
+			on_release: root.on_release_button()
+
+<ThirdWindow>
+    name: "third"
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "Enter Details"
+			font_size:32
+			color: 'red'
+
+        GridLayout:
+			cols:2
+
+            Label:
+                text: "Enter List Name"
+
+            TextInput:
+                id: newlist
+                multiline: False
+
+		Button:
+			text: "Submit"
+			font_size:32
+			size_hint: (.5, .3)
+			pos_hint: {'center_x': .5, 'center_y': .5}
+			background_color: 'green'
+			color: 'white'
+			on_release: root.on_release_button1()

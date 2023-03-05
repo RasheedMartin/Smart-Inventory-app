@@ -1,44 +1,72 @@
+import barcode_reader
+try:
+    from kivy.app import App
+except ImportError:
+    import pip._internal as pip
 
-from kivy.app import App
+    pip.main(['install', 'kivy'])
+    from kivy.app import App
+from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+from kivy.uix.textinput import TextInput
 from kivy.uix.widget import Widget
 
-# Designate Our .kv design file
-Builder.load_file('KivyApp.kv')
 
-
-class MainWidget(Widget):
+class MainWindow(Screen):
     checks = []
     action = ' '
 
     def checkbox_click(self, instance, value, topping):
         if value:
-            MainWidget.checks.append(topping)
+            MainWindow.checks.append(topping)
             tops = ''
-            for x in MainWidget.checks:
+            for x in MainWindow.checks:
                 tops = f'{tops} {x}'
-            MainWidget.action = x
+            MainWindow.action = x
 
         else:
-            MainWidget.checks.remove(topping)
+            MainWindow.checks.remove(topping)
             tops = ''
-            for x in MainWidget.checks:
+            for x in MainWindow.checks:
                 tops = f'{tops} {x}'
 
     def on_press_button(self):
-        if MainWidget.action == 'Create List':
+
+        if MainWindow.action == 'Create List':
+            self.manager.current = "second"
             pass
-        elif MainWidget.action == "Edit List":
+        elif MainWindow.action == "Edit List":
             pass
-        elif MainWidget.action == "Stock Prediction":
+        elif MainWindow.action == "Stock Prediction":
             pass
         else:
             pass
+
+
+class SecondWindow(Screen):
+
+    def on_release_button(self):
+        self.manager.current = 'third'
+        pass
+
+
+class ThirdWindow(Screen):
+
+    def on_release_button1(self):
+        pass
+
+
+class WindowManager(ScreenManager):
+    pass
+
+
+# Designate Our .kv design file
+kv = Builder.load_file('KivyApp.kv')
 
 
 class MainApp(App):
     def build(self):
-        return MainWidget()
+        return kv
 
 
 if __name__ == '__main__':
