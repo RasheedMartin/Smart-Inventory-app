@@ -1,4 +1,4 @@
-import barcode_reader
+from barcode_reader import run
 try:
     from kivy.app import App
 except ImportError:
