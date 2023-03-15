@@ -52,11 +52,11 @@ class CreationWindow(Screen):
         # Check the SQL data first
         # If it exists, show it popup window that it already exists
         # If it doesn't exist in SQL check the APIs
-        name, price = get_price(barcode_data)
+        price, name = get_price(barcode_data)
         # Go to the manual entry
-        if name or price is None:
+        if name is None or price is None:
             # Pass the barcode and category to the third screen
-            self.pass_info(barcode_data, category)
+            self.manager.pass_info(barcode_data, category)
             self.manager.current = 'manualform'  # Go to manual Form
         # It is successful and update the database
         else:

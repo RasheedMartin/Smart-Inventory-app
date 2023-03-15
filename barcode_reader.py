@@ -60,7 +60,7 @@ def get_price(barcode_result):
         price = data_dict['Stores'][0]['price']
         name = data_dict['item_attributes']['title']
 
-        print(f"The name of item is {name}")
+        print(f"The name of item is {name} and the price is {price}")
     
         return price, name
     except KeyError: 
@@ -86,7 +86,7 @@ def create_database():
     cursor.execute('''CREATE TABLE products
                       (UPC TEXT PRIMARY KEY,
                        Name TEXT,
-                       Price REAL
+                       Price REAL,
                        Category TEXT)''')
 
     # Commit the table creation
@@ -107,7 +107,7 @@ def update_database(name, barcode, price, category):
     cursor = conn.cursor()
 
     # Insert data into the table
-    cursor.execute("INSERT INTO barcode_data (UPC, Name, Price, Category) VALUES (?, ?, ?, ?)", 
+    cursor.execute("INSERT INTO products (UPC, Name, Price, Category) VALUES (?, ?, ?, ?)", 
                    (barcode, name, price, category))
 
     # Commit the changes

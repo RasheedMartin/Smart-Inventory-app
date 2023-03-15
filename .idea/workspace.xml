@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Finally connected">
+    <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Some updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KivyApp.kv" beforeDir="false" afterPath="$PROJECT_DIR$/KivyApp.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KivyApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/KivyApp.py" afterDir="false" />
@@ -202,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678045686183</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Some updates">
+      <created>1678862188579</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678862188579</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,12 +229,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added in the webscraping file" />
     <MESSAGE value="Finally connected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally connected" />
+    <MESSAGE value="Some updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some updates" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1676737756872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode.coverage" NAME="barcode Coverage Results" MODIFIED="1678041062201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Smart_Inventory_app$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1678860847092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Smart_Inventory_app$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1678863591947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$webscraping.coverage" NAME="webscraping Coverage Results" MODIFIED="1676841968195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode_reader.coverage" NAME="barcode_reader Coverage Results" MODIFIED="1678854230274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
