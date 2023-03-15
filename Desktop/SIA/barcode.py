@@ -7,6 +7,16 @@ import json
 import sqlite3
 
 # Define a function to capture video from your camera and process each frame
+def main():
+    barcode_result = scan_barcodes()
+    print(barcode_result)
+    price, name = get_price(barcode_result)
+    print(price, name)
+    dbname = create_database()
+    return price, name
+
+
+
 def scan_barcodes():
     cap = cv2.VideoCapture(0)   # 0 means the default camera on your device
     font = cv2.FONT_HERSHEY_PLAIN
@@ -28,9 +38,6 @@ def scan_barcodes():
     cv2.destroyAllWindows()
     return barcode_data   # Return the decoded barcode data`
 
-# Call the function to start scanning barcodes and save the result to a variable
-#barcode_result = scan_barcodes()
-#print(barcode_result)   # Print the decoded barcode data
 
 #Website to use for searching barcode values
 def get_price(barcode_result):
@@ -60,11 +67,6 @@ def get_price(barcode_result):
 
     return price, name
 
-#print(get_price(barcode_result))
-
-#price, name = get_price(barcode_result)
-
-
 def create_database():
     # Prompt the user for a database name
     dbname = input("Enter a name for the database: ")
@@ -79,7 +81,8 @@ def create_database():
     cursor.execute('''CREATE TABLE products
                       (UPC TEXT PRIMARY KEY,
                        Name TEXT,
-                       Price REAL)''')
+                       Price REAL,
+                       Category TEXT)''')
     
     # Commit the table creation
     conn.commit()
@@ -87,19 +90,17 @@ def create_database():
     # Close the connection
     conn.close()
     
-    print(f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', and 'Price'.")
+    print(f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', 'Price', 'Catergory'.")
+    return dbname
 
 
-#create_database()
-
-
-def update_database(dbname, name, barcode, price):
+def update_database(dbname, name, barcode, price, category):
     conn = sqlite3.connect(dbname + ".db")
 
     cursor = conn.cursor()
 
     # Insert data into the table
-    cursor.execute("INSERT INTO barcode_data (UPC, Name, Price) VALUES (?, ?, ?)", (barcode, name, price))
+    cursor.execute("INSERT INTO barcode_data (UPC, Name, Price) VALUES (?, ?, ?)", (barcode, name, price,category))
 
     # Commit the changes
     conn.commit()
@@ -108,8 +109,6 @@ def update_database(dbname, name, barcode, price):
     conn.close()
     return
 
-sql_name = 'barcode_data'
-#update_database(sql_name,name, barcode_result, price)
 
 
 def update_manually(dbname):
@@ -127,8 +126,33 @@ def update_manually(dbname):
 
     # Close the connection
     conn.close()
-    
-update_manually(sql_name)
-    
+    return
 
+
+def checking(dbname,upc_code):
+    conn = sqlite3.connect(dbname + ".db")
+
+    cursor = conn.cursor()
+    cursor.execute("SELECT name FROM products WHERE upc_code=?", (upc_code,))
+    result = cursor.fetchone()
+    conn.close()
+    if result:
+        return True
+    else:
+        return False
+    
+    return
+
+def get_unique_categories(dbname):
+    conn = sqlite3.connect('dbname.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT DISTINCT category FROM products")
+    result = cursor.fetchall()
+    conn.close()
+    categories = [r[0] for r in result]
+    return categories
+
+   
+if __name__ == "__main__":
+    Test = main()
 
