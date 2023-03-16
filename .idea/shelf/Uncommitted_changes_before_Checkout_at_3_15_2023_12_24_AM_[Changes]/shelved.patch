@@ -1,0 +1,296 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"872cbe2c-e426-4936-bf83-7b194371e1da\" name=\"Changes\" comment=\"Finally connected\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/KivyApp.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/KivyApp.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/barcode_reader.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/barcode_reader.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"FlaskConsoleOptions\" custom-start-script=\"import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\\nApp: %s [%s]\\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))\">\r\n    <envs>\r\n      <env key=\"FLASK_APP\" value=\"app\" />\r\n    </envs>\r\n    <option name=\"myCustomStartScript\" value=\"import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\\nApp: %s [%s]\\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))\" />\r\n    <option name=\"myEnvs\">\r\n      <map>\r\n        <entry key=\"FLASK_APP\" value=\"app\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Barcode_reading\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MbKqSOIyybtmSqRbAbsNfFNIHQ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Users/fresh/PycharmProjects/Smart-Inventory-app\",\r\n    \"settings.editor.selected.configurable\": \"configurable.group.project\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\fresh\\PycharmProjects\\Smart-Inventory-app\" />\r\n      <recent name=\"C:\\Users\\fresh\\PycharmProjects\\Smart-Inventory-app\\Smart-Inventory-app\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Python.KivyApp\">\r\n    <configuration name=\"KivyApp\" type=\"PythonConfigurationType\" factoryName=\"Python\">\r\n      <module name=\"Smart-Inventory-app\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"C:\\Users\\fresh\\AppData\\Local\\Programs\\Python\\Python39\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/KivyApp.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"KivyApp\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"C:\\Users\\fresh\\AppData\\Local\\Programs\\Python\\Python39\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/KivyApp.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"true\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"KivyApp\" type=\"PythonConfigurationType\" factoryName=\"Python\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"C:\\Users\\fresh\\PycharmProjects\\pythonProject\\venv\\Scripts\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"true\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"PythonConfigurationType\" factoryName=\"Python\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"true\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"barcode_reader\" type=\"PythonConfigurationType\" factoryName=\"Python\" nameIsGenerated=\"true\">\r\n      <module name=\"Smart-Inventory-app\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/barcode_reader.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Python.KivyApp\" />\r\n      <item itemvalue=\"Python.barcode_reader\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.KivyApp\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Added in the webscraping file\">\r\n      <created>1676841799735</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1676841799736</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"872cbe2c-e426-4936-bf83-7b194371e1da\" name=\"Changes\" comment=\"Added in the webscraping file\" />\r\n      <created>1678043686832</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1678043686832</updated>\r\n      <workItem from=\"1678043689243\" duration=\"4706000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Finally connected\">\r\n      <created>1678045686183</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1678045686183</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Added in the webscraping file\" />\r\n    <MESSAGE value=\"Finally connected\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Finally connected\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$GUI.coverage\" NAME=\"GUI Coverage Results\" MODIFIED=\"1676737756872\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$barcode.coverage\" NAME=\"barcode Coverage Results\" MODIFIED=\"1678041062201\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$KivyApp.coverage\" NAME=\"KivyApp Coverage Results\" MODIFIED=\"1678048439611\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$webscraping.coverage\" NAME=\"webscraping Coverage Results\" MODIFIED=\"1676841968195\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$barcode_reader.coverage\" NAME=\"barcode_reader Coverage Results\" MODIFIED=\"1678048436163\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,6 +5,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Finally connected">
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_5_2023_9_49_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_5_2023_9_49_AM__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/KivyApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/KivyApp.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/barcode_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/barcode_reader.py" afterDir="false" />
+@@ -49,29 +50,32 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "C:/Users/fresh/PycharmProjects/Smart-Inventory-app",
+-    "settings.editor.selected.configurable": "configurable.group.project"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/fresh/PycharmProjects/Smart-Inventory-app&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.project&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\fresh\PycharmProjects\Smart-Inventory-app" />
+       <recent name="C:\Users\fresh\PycharmProjects\Smart-Inventory-app\Smart-Inventory-app" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Python.KivyApp">
++  <component name="RunManager" selected="Python.barcode_reader">
+     <configuration name="KivyApp" type="PythonConfigurationType" factoryName="Python">
+-      <module name="Smart-Inventory-app" />
+       <option name="INTERPRETER_OPTIONS" value="" />
+       <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
+       <option name="SDK_HOME" value="C:\Users\fresh\AppData\Local\Programs\Python\Python39\python.exe" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+       <option name="IS_MODULE_SDK" value="false" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
++      <module name="" />
+       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/KivyApp.py" />
+       <option name="PARAMETERS" value="" />
+@@ -143,14 +147,17 @@
+       <method v="2" />
+     </configuration>
+     <configuration name="barcode_reader" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+-      <module name="Smart-Inventory-app" />
+       <option name="INTERPRETER_OPTIONS" value="" />
+       <option name="PARENT_ENVS" value="true" />
+-      <option name="SDK_HOME" value="" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="C:\Users\fresh\AppData\Local\Programs\Python\Python39\python.exe" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+-      <option name="IS_MODULE_SDK" value="true" />
++      <option name="IS_MODULE_SDK" value="false" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
++      <module name="" />
+       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/barcode_reader.py" />
+       <option name="PARAMETERS" value="" />
+@@ -201,6 +208,18 @@
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.History.Properties">
++    <option name="SHOW_OTHER_BRANCHES" value="true" />
++    <option name="COLUMN_ID_ORDER">
++      <list>
++        <option value="Default.Root" />
++        <option value="Default.Author" />
++        <option value="Default.Date" />
++        <option value="Default.Subject" />
++        <option value="Space.CommitStatus" />
++      </list>
++    </option>
++  </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+       <map>
+@@ -220,8 +239,8 @@
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/Smart_Inventory_app$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1676737756872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+     <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode.coverage" NAME="barcode Coverage Results" MODIFIED="1678041062201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+-    <SUITE FILE_PATH="coverage/Smart_Inventory_app$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1678048439611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
++    <SUITE FILE_PATH="coverage/Smart_Inventory_app$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1678853796961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+     <SUITE FILE_PATH="coverage/Smart_Inventory_app$webscraping.coverage" NAME="webscraping Coverage Results" MODIFIED="1676841968195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+-    <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode_reader.coverage" NAME="barcode_reader Coverage Results" MODIFIED="1678048436163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
++    <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode_reader.coverage" NAME="barcode_reader Coverage Results" MODIFIED="1678854057333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: KivyApp.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from barcode_reader import scan_barcodes\r\n\r\ntry:\r\n    from kivy.app import App\r\nexcept ImportError:\r\n    import pip._internal as pip\r\n\r\n    pip.main(['install', 'kivy'])\r\n    from kivy.app import App\r\nfrom kivy.uix.screenmanager import ScreenManager, Screen\r\nfrom kivy.lang import Builder\r\n\r\n\r\nclass MainWindow(Screen):\r\n    checks = []\r\n    action = ' '\r\n\r\n    def checkbox_click(self, instance, value, topping):\r\n        if value:\r\n            MainWindow.checks.append(topping)\r\n            tops = ''\r\n            for x in MainWindow.checks:\r\n                tops = f'{tops} {x}'\r\n            MainWindow.action = x\r\n\r\n        else:\r\n            MainWindow.checks.remove(topping)\r\n            tops = ''\r\n            for x in MainWindow.checks:\r\n                tops = f'{tops} {x}'\r\n\r\n    def on_press_button(self):\r\n\r\n        if MainWindow.action == 'Create List':\r\n            self.manager.current = \"second\"\r\n            pass\r\n        elif MainWindow.action == \"Edit List\":\r\n            pass\r\n        elif MainWindow.action == \"Stock Prediction\":\r\n            pass\r\n        else:\r\n            pass\r\n\r\n\r\nclass SecondWindow(Screen):\r\n\r\n    def on_release_button(self):\r\n        temp = scan_barcodes()\r\n        # if temp is None:\r\n        self.manager.current = 'third' # form\r\n\r\n        #database(temp)\r\n        pass\r\n\r\n\r\nclass ThirdWindow(Screen):\r\n\r\n    def on_release_button1(self):\r\n        #database(temp)\r\n        pass\r\n\r\n\r\nclass WindowManager(ScreenManager):\r\n    pass\r\n\r\n\r\n# Designate Our .kv design file\r\nkv = Builder.load_file('KivyApp.kv')\r\n\r\n\r\nclass MainApp(App):\r\n    def build(self):\r\n        return kv\r\n\r\n\r\nif __name__ == '__main__':\r\n    app = MainApp()\r\n    app.run()\r\n
+===================================================================
+diff --git a/KivyApp.py b/KivyApp.py
+--- a/KivyApp.py	
++++ b/KivyApp.py	
+@@ -1,4 +1,4 @@
+-from barcode_reader import scan_barcodes
++from barcode_reader import scan_barcodes, get_price, create_database, update_database
+ 
+ try:
+     from kivy.app import App
+@@ -42,21 +42,25 @@
+             pass
+ 
+ 
++# Adding List
+ class SecondWindow(Screen):
+ 
+     def on_release_button(self):
+-        temp = scan_barcodes()
+-        # if temp is None:
+-        self.manager.current = 'third' # form
+-
+-        #database(temp)
++        category = self.ids.newlist.text
++        barcode_data = scan_barcodes()
++        name, price = get_price(barcode_data)
++
++        if name or price is None:
++            self.manager.current = 'third'  # form
++        else:
++            update_database(name, barcode_data, price)
+         pass
+ 
+ 
+ class ThirdWindow(Screen):
+ 
+     def on_release_button1(self):
+-        #database(temp)
++        # database(temp)
+         pass
+ 
+ 
+Index: barcode_reader.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import cv2\r\nimport numpy as np\r\nimport pyzbar.pyzbar as pyzbar\r\nimport requests\r\nfrom bs4 import BeautifulSoup\r\nimport json\r\n\r\n\r\n# Define a function to capture video from your camera and process each frame\r\ndef scan_barcodes():\r\n    cap = cv2.VideoCapture(0)  # 0 means the default camera on your device\r\n    font = cv2.FONT_HERSHEY_PLAIN\r\n    barcode_data = None  # Create a variable to store the decoded barcode data\r\n    while barcode_data is None:  # Keep scanning until a barcode is successfully decoded\r\n        _, frame = cap.read()  # Read each frame from the camera\r\n        decoded_objects = pyzbar.decode(frame)  # Decode any barcodes in the frame\r\n        for obj in decoded_objects:\r\n            # Draw a rectangle around the barcode and display its data\r\n            cv2.rectangle(frame, (obj.rect.left, obj.rect.top),\r\n                          (obj.rect.left + obj.rect.width, obj.rect.top + obj.rect.height), (255, 0, 0), 2)\r\n            cv2.putText(frame, str(obj.data.decode('utf-8')), (obj.rect.left, obj.rect.top), font, 2, (255, 255, 255),\r\n                        2, cv2.LINE_AA)\r\n            barcode_data = obj.data.decode('utf-8')  # Save the decoded data to the variable\r\n        # Display the processed frame\r\n        cv2.imshow(\"Barcode Scanner\", frame)\r\n        if barcode_data is not None:\r\n            # Website to use for searching barcode values\r\n            url = \"https://api.barcodespider.com/v1/lookup\"\r\n            querystring = {\"upc\": barcode_data}\r\n\r\n            headers = {\r\n                'token': \"d970f9f75b5fb1d6c3a5\",\r\n                'Host': \"api.barcodespider.com\",\r\n                'Accept-Encoding': \"gzip, deflate\",\r\n                'Connection': \"keep-alive\",\r\n                'cache-control': \"no-cache\"\r\n            }\r\n\r\n            response = requests.request(\"GET\", url, headers=headers, params=querystring)\r\n            data = response.json()\r\n\r\n            prince = response.text\r\n\r\n            data_dict = json.loads(prince)\r\n            if data_dict['code'][0] == 404:\r\n                break\r\n        # Press 'q' to quit\r\n        if cv2.waitKey(1) & 0xFF == ord('q'):\r\n            break\r\n    cap.release()\r\n    # cv2.destroyAllWindows()\r\n    # Return the decoded barcode data`\r\n\r\n\r\n\r\n
+===================================================================
+diff --git a/barcode_reader.py b/barcode_reader.py
+--- a/barcode_reader.py	
++++ b/barcode_reader.py	
+@@ -4,6 +4,7 @@
+ import requests
+ from bs4 import BeautifulSoup
+ import json
++import sqlite3
+ 
+ 
+ # Define a function to capture video from your camera and process each frame
+@@ -23,33 +24,99 @@
+             barcode_data = obj.data.decode('utf-8')  # Save the decoded data to the variable
+         # Display the processed frame
+         cv2.imshow("Barcode Scanner", frame)
+-        if barcode_data is not None:
+-            # Website to use for searching barcode values
+-            url = "https://api.barcodespider.com/v1/lookup"
+-            querystring = {"upc": barcode_data}
++        # Press 'q' to quit
++        if cv2.waitKey(1) & 0xFF == ord('q'):
++            break
++    cap.release()
++    cv2.destroyAllWindows()
++    return barcode_data  # Return the decoded barcode data`
++
++
++# Call the function to start scanning barcodes and save the result to a variable
++# barcode_result = scan_barcodes()
++# print(barcode_result)   # Print the decoded barcode data
++
++# Website to use for searching barcode values
++def get_price(barcode_result):
++    url = "https://api.barcodespider.com/v1/lookup"
++    querystring = {"upc": barcode_result}
+ 
+-            headers = {
+-                'token': "d970f9f75b5fb1d6c3a5",
+-                'Host': "api.barcodespider.com",
+-                'Accept-Encoding': "gzip, deflate",
+-                'Connection': "keep-alive",
+-                'cache-control': "no-cache"
+-            }
++    headers = {
++        'token': "d970f9f75b5fb1d6c3a5",
++        'Host': "api.barcodespider.com",
++        'Accept-Encoding': "gzip, deflate",
++        'Connection': "keep-alive",
++        'cache-control': "no-cache"
++    }
+ 
+-            response = requests.request("GET", url, headers=headers, params=querystring)
+-            data = response.json()
++    response = requests.request("GET", url, headers=headers, params=querystring)
++    data = response.json()
+ 
+-            prince = response.text
++    price = response.text
++
++    data_dict = json.loads(price)
++
++    try:
++        # Extract the price from the dictionary
++        price = data_dict['Stores'][0]['price']
++        name = data_dict['item_attributes']['title']
++        print(f"The name of item is {name}")
++        return name, price
++
++    except KeyError:
++        return None, None
++
+ 
+-            data_dict = json.loads(prince)
+-            if data_dict['code'][0] == 404:
+-                break
+-        # Press 'q' to quit
+-        if cv2.waitKey(1) & 0xFF == ord('q'):
+-            break
+-    cap.release()
+-    # cv2.destroyAllWindows()
+-    # Return the decoded barcode data`
++# print(get_price(barcode_result))
+ 
++# price, name = get_price(barcode_result)
+ 
+ 
++def create_database():
++    # Prompt the user for a database name
++    dbname = 'barcode_data'
++
++    # Create a connection to the database
++    conn = sqlite3.connect(dbname + ".db")
++
++    # Create a cursor object
++    cursor = conn.cursor()
++
++    # Create a table with three columns
++    cursor.execute('''CREATE TABLE products
++                      (UPC TEXT PRIMARY KEY,
++                       Name TEXT,
++                       Price REAL)''')
++
++    # Commit the table creation
++    conn.commit()
++
++    # Close the connection
++    conn.close()
++
++    print(f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', and 'Price'.")
++
++
++# create_database()
++
++
++def update_database(name, barcode, price):
++    conn = sqlite3.connect("barcode_data.db")
++
++    cursor = conn.cursor()
++
++    # Insert data into the table
++    cursor.execute("INSERT INTO barcode_data (UPC, Name, Price) VALUES (?, ?, ?)", (barcode, name, price))
++
++    # Commit the changes
++    conn.commit()
++
++    # Close the connection
++    conn.close()
++    return
++
++
++# update_database(sql_name,name, barcode_result, price)
++
++if __name__ == "__main__":
++    scan_barcodes()
