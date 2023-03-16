@@ -55,15 +55,15 @@ def get_price(barcode_result):
     price = response.text
 
     data_dict = json.loads(price)
-    try: 
+    try:
         # Extract the price from the dictionary
         price = data_dict['Stores'][0]['price']
         name = data_dict['item_attributes']['title']
 
         print(f"The name of item is {name} and the price is {price}")
-    
+
         return price, name
-    except KeyError: 
+    except KeyError:
         return None, None
 
 
@@ -95,7 +95,8 @@ def create_database():
     # Close the connection
     conn.close()
 
-    print(f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', 'Price' and 'Category'.")
+    print(
+        f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', 'Price' and 'Category'.")
 
 
 # create_database()
@@ -107,7 +108,7 @@ def update_database(name, barcode, price, category):
     cursor = conn.cursor()
 
     # Insert data into the table
-    cursor.execute("INSERT INTO products (UPC, Name, Price, Category) VALUES (?, ?, ?, ?)", 
+    cursor.execute("INSERT INTO products (UPC, Name, Price, Category) VALUES (?, ?, ?, ?)",
                    (barcode, name, price, category))
 
     # Commit the changes
@@ -117,9 +118,31 @@ def update_database(name, barcode, price, category):
     conn.close()
     return
 
+
 # update_database(sql_name,name, barcode_result, price)
 
+def checking(upc_code):
+    conn = sqlite3.connect("barcode_data.db")
 
-if __name__ == "__main__": 
-    pass
+    cursor = conn.cursor()
+    cursor.execute("SELECT name FROM products WHERE upc_code=?", (upc_code,))
+    result = cursor.fetchone()
+    conn.close()
+    if result:
+        return True
+    else:
+        return False
 
+
+def get_unique_categories():
+    conn = sqlite3.connect('barcode_data.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT DISTINCT category FROM products")
+    result = cursor.fetchall()
+    conn.close()
+    categories = [r[0] for r in result]
+    return categories
+
+
+if __name__ == "__main__":
+    get_unique_categories()

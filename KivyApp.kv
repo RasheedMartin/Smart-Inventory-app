@@ -2,6 +2,8 @@ WindowManager:
     MainWindow:
     CreationWindow:
     ManualWindow:
+    SelectionWindow:
+    ProductWindow:
 
 <MainWindow>
     name: "main"
@@ -140,3 +142,92 @@ WindowManager:
 			background_color: 'green'
 			color: 'white'
 			on_release: root.on_release_button1()
+
+<SelectionWindow>:
+    name: "selection"
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+		padding: [0, 50]
+
+		Label:
+		    text: "Selection List to Edit"
+			font_size:32
+			color: 'red'
+        GridLayout:
+			cols:2
+			padding: [50, 55]
+
+
+            DropDown:
+                id: drop_content
+                # on_parent: self.dismiss()
+                on_select: btn.text = f'{args[1]}' #
+                max_height: 120
+
+        GridLayout:
+            cols:2
+            padding: [50, 55]
+
+            Button:
+                text: "Submit"
+                # on_release: root.manager.current = 'main'
+
+            Button:
+                text: "Back"
+                on_release: root.manager.current = 'main'
+
+<ProductWindow>:
+    name: "product"
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+		padding: [0, 50]
+
+        Label:
+			text: "Add Product"
+			font_size:84
+			color: 'red'
+			padding: [0, 50]
+
+        GridLayout:
+			cols:3
+            padding: [50, 70]
+            Label:
+                text: "Enter UPC Number"
+                font_size: 25
+
+            TextInput:
+                id: newitem
+                multiline: False
+                font_size: 22
+
+            Button:
+                text: "Submit"
+                font_size:22
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'green'
+                color: 'white'
+                padding: [0, 50]
+                on_release: root.on_release_button()
+
+
+		Button:
+			text: "Launch Camera"
+			font_size:32
+			size_hint: (.5, .3)
+			pos_hint: {'center_x': .5, 'center_y': .5}
+			background_color: 'green'
+			color: 'white'
+			padding: [0, 50]
+			on_release: root.launch_camera()
+
+        Button:
+            text: "Back"
+            font_size: 32
+            size_hint: (.5, .3)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+			background_color: 'red'
+			color: 'white'
+			on_release: root.manager.current = 'main'

@@ -16,7 +16,6 @@ def main():
     return price, name
 
 
-
 def scan_barcodes():
     cap = cv2.VideoCapture(0)   # 0 means the default camera on your device
     font = cv2.FONT_HERSHEY_PLAIN
@@ -40,6 +39,8 @@ def scan_barcodes():
 
 
 #Website to use for searching barcode values
+
+
 def get_price(barcode_result):
     url = "https://api.barcodespider.com/v1/lookup"  
     querystring = {"upc":barcode_result}
