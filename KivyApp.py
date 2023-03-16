@@ -1,5 +1,5 @@
 from barcode_reader import scan_barcodes, \
-    get_price, create_database, update_database, get_unique_categories
+    get_price, create_database, update_database, get_unique_categories, checking
 
 try:
     from kivy.app import App
@@ -83,18 +83,22 @@ class ProductWindow(Screen):
 
     def data_retrieval(self, barcode_data):
         # Check the SQL data first
+        exists = checking(barcode_data)
         # If it exists, show it popup window that it already exists
+        if exists:
+            pass
         # If it doesn't exist in SQL check the APIs
-        price, name = get_price(barcode_data)
-        # Go to the manual entry
-        if name is None or price is None:
-            # Pass the barcode and category to the third screen
-            self.manager.pass_info(barcode_data, self.category)
-            self.manager.current = 'manualform'  # Go to manual Form
-        # It is successful and update the database
         else:
-            # Display a successful popup window
-            update_database(name, barcode_data, price, self.category)
+            price, name = get_price(barcode_data)
+            # Go to the manual entry
+            if name is None or price is None:
+                # Pass the barcode and category to the third screen
+                self.manager.pass_info(barcode_data, self.category)
+                self.manager.current = 'manualform'  # Go to manual Form
+            # It is successful and update the database
+            else:
+                # Display a successful popup window
+                update_database(name, barcode_data, price, self.category)
 
 
 class WindowManager(ScreenManager):
