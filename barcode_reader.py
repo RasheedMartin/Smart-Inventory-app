@@ -14,19 +14,22 @@ def scan_barcodes():
     barcode_data = None  # Create a variable to store the decoded barcode data
     while barcode_data is None:  # Keep scanning until a barcode is successfully decoded
         _, frame = cap.read()  # Read each frame from the camera
-        decoded_objects = pyzbar.decode(frame)  # Decode any barcodes in the frame
-        for obj in decoded_objects:
-            # Draw a rectangle around the barcode and display its data
-            cv2.rectangle(frame, (obj.rect.left, obj.rect.top),
-                          (obj.rect.left + obj.rect.width, obj.rect.top + obj.rect.height), (255, 0, 0), 2)
-            cv2.putText(frame, str(obj.data.decode('utf-8')), (obj.rect.left, obj.rect.top), font, 2, (255, 255, 255),
-                        2, cv2.LINE_AA)
-            barcode_data = obj.data.decode('utf-8')  # Save the decoded data to the variable
-        # Display the processed frame
-        cv2.imshow("Barcode Scanner", frame)
-        # Press 'q' to quit
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+        try:
+            decoded_objects = pyzbar.decode(frame)  # Decode any barcodes in the frame
+            for obj in decoded_objects:
+                # Draw a rectangle around the barcode and display its data
+                cv2.rectangle(frame, (obj.rect.left, obj.rect.top),
+                              (obj.rect.left + obj.rect.width, obj.rect.top + obj.rect.height), (255, 0, 0), 2)
+                cv2.putText(frame, str(obj.data.decode('utf-8')), (obj.rect.left, obj.rect.top), font, 2, (255, 255, 255),
+                            2, cv2.LINE_AA)
+                barcode_data = obj.data.decode('utf-8')  # Save the decoded data to the variable
+            # Display the processed frame
+            cv2.imshow("Barcode Scanner", frame)
+            # Press 'q' to quit
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        except TypeError:
+            return None
     cap.release()
     cv2.destroyAllWindows()
     return barcode_data  # Return the decoded barcode data`
@@ -83,7 +86,7 @@ def create_database():
     cursor = conn.cursor()
 
     # Create a table with three columns
-    cursor.execute('''CREATE TABLE products
+    cursor.execute('''CREATE TABLE IF NOT EXISTS 'products'
                       (UPC TEXT PRIMARY KEY,
                        Name TEXT,
                        Price REAL,
@@ -125,7 +128,7 @@ def checking(upc_code):
     conn = sqlite3.connect("barcode_data.db")
 
     cursor = conn.cursor()
-    cursor.execute("SELECT name FROM products WHERE upc_code=?", (upc_code,))
+    cursor.execute("SELECT name FROM products WHERE UPC=?", (upc_code,))
     result = cursor.fetchone()
     conn.close()
     if result:

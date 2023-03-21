@@ -62,7 +62,8 @@ class ManualWindow(Screen):
     def on_release_button(self):
         name = self.ids.newName.text
         price = self.ids.newPrice.text
-        update_database(name, self.barcode_data, price, self.category)
+        if self.barcode_data is not None:
+            update_database(name, self.barcode_data, price, self.category)
 
 
 class SelectionWindow(Screen):
@@ -79,7 +80,10 @@ class ProductWindow(Screen):
 
     def launch_camera(self):
         barcode_data = scan_barcodes()
-        self.data_retrieval(barcode_data)
+        if barcode_data is not None:
+            self.data_retrieval(barcode_data)
+        else:
+            pass # pop up error
 
     def data_retrieval(self, barcode_data):
         # Check the SQL data first
@@ -93,6 +97,7 @@ class ProductWindow(Screen):
             # Go to the manual entry
             if name is None or price is None:
                 # Pass the barcode and category to the third screen
+
                 self.manager.pass_info(barcode_data, self.category)
                 self.manager.current = 'manualform'  # Go to manual Form
             # It is successful and update the database
@@ -137,6 +142,6 @@ class MainApp(App):
 
 
 if __name__ == '__main__':
-    # create_database()
+    create_database()
     app = MainApp()
     app.run()
