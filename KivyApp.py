@@ -1,18 +1,13 @@
 from barcode_reader import scan_barcodes, \
     get_price, create_database, update_database, get_unique_categories, checking
 
-try:
-    from kivy.app import App
-except ImportError:
-    import pip._internal as pip
-
-    pip.main(['install', 'kivy'])
-    from kivy.app import App
+from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
+import MDTable
 
 
 class MainWindow(Screen):
@@ -48,10 +43,11 @@ class MainWindow(Screen):
 
 
 class CreationWindow(Screen):
+    category = StringProperty('')
 
     def on_release_button(self):
-        category = self.ids.newlist.text
-        self.manager.pass_categ(category)
+        self.category = self.ids.newlist.text
+        # self.manager.pass_categ(self.category)
         self.manager.current = 'product'
 
 
@@ -71,39 +67,53 @@ class SelectionWindow(Screen):
 
 
 class ProductWindow(Screen):
-    category = StringProperty("")
+    category = StringProperty('Test')
+    barcode_data = StringProperty('')
 
     def on_release_button(self):
         # barcode_data = "021200523588"
-        barcode_data = self.ids.newitem.text
-        self.data_retrieval(barcode_data)
+        self.barcode_data = self.ids.newitem.text
+        self.data_retrieval(self.barcode_data)
 
     def launch_camera(self):
-        barcode_data = scan_barcodes()
-        if barcode_data is not None:
-            self.data_retrieval(barcode_data)
+        try:
+            self.barcode_data = scan_barcodes()
+        except ValueError:
+            pass
+
+        if self.barcode_data is not None:
+            self.data_retrieval(self.barcode_data)
         else:
-            pass # pop up error
+            pass  # pop up error
 
     def data_retrieval(self, barcode_data):
         # Check the SQL data first
         exists = checking(barcode_data)
         # If it exists, show it popup window that it already exists
         if exists:
-            pass
+            print(self.category)
         # If it doesn't exist in SQL check the APIs
         else:
             price, name = get_price(barcode_data)
             # Go to the manual entry
             if name is None or price is None:
                 # Pass the barcode and category to the third screen
-
-                self.manager.pass_info(barcode_data, self.category)
+                print(self.category)
+                # self.manager.pass_info(barcode_data, self.category)
                 self.manager.current = 'manualform'  # Go to manual Form
             # It is successful and update the database
             else:
                 # Display a successful popup window
+                print(self.category)
                 update_database(name, barcode_data, price, self.category)
+
+
+class EditWindow(Screen):
+    def graph(self):
+        xls = pd.read_excel('filepath')
+        # df = pd.DataFrame.xls
+        dfgui.show(xls)
+        # print xls
 
 
 class WindowManager(ScreenManager):
@@ -129,9 +139,9 @@ class MainApp(App):
         drop_down = selection.ids.drop_content
         # Now iterate over...
         categories = get_unique_categories()
-        for name in categories:
+        for name in enumerate(categories):
             btn = Button(
-                text=name,
+                text=name[1],
                 size_hint_y=None,
                 height=35,
                 background_color='yellow',
