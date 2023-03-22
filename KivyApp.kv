@@ -4,6 +4,7 @@ WindowManager:
     ManualWindow:
     SelectionWindow:
     ProductWindow:
+    EditWindow:
 
 <MainWindow>
     name: "main"
@@ -178,6 +179,7 @@ WindowManager:
                 # on_parent: self.dismiss()
                 on_select:
                     drop_content.text = f'{args[1]}'
+                    root.manager.current = 'edit'
                 max_height: 120
 
         GridLayout:
@@ -259,4 +261,42 @@ WindowManager:
 		orientation: "vertical"
 		size: root.width, root.height
 		padding: [0, 50]
-		id: table_place
+
+
+<ErrorPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "ERROR"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "There has been an Error"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
+
+
+<SuccessPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Success"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: success_label
+            text: "That was a success"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
+
+<ExistsPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Already Exists"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "This UPC already exists"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
