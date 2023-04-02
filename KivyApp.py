@@ -8,9 +8,53 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
+from kivy.core.window import Window
+from kivy.core.image import Image
+# from kivy.graphics import BorderImage
+from kivy.graphics import Color, Rectangle
+
+# from kivy.uix.image import AsyncImage
+
+# Window.clearcolor = (0.5, 0.5, 0.5, 1)
+# Window.size = (400, 400)
+Window.minimum_width, Window.minimum_height = (400, 400)
+
+
+class HomeWindow(Screen):
+    pass
+
+
+class SignUpWindow(Screen):
+    def on_release_button(self):
+        firstname = self.ids.firstname.text
+        lastname = self.ids.lastname.text
+        email = self.ids.email.text
+        username = self.ids.email.text
+        password = self.ids.password_text.text
+
+        for x in [firstname, lastname, email, username, password]:
+            if x.isspace() or x == '' or x is None:
+                SignUpErrorPopup().open()
+                break
+        else:
+            self.ids.firstname.text = ''
+            self.ids.lastname.text = ''
+            self.ids.email.text = ''
+            self.ids.email.text = ''
+            self.ids.password_text.text = ''
+            SignUpSuccessPopup().open()
+
+            self.manager.current = 'main'
+
+
+class LoginWindow(Screen):
+    def on_release_button(self):
+        self.manager.current = 'main'
 
 
 class MainWindow(Screen):
+    firstname = StringProperty('')
+
     checks = []
     action = ' '
 
@@ -40,6 +84,9 @@ class MainWindow(Screen):
             pass
         else:
             pass
+
+    def on_logout_button(self):
+        self.manager.current = 'home'
 
 
 class CreationWindow(Screen):
@@ -126,12 +173,23 @@ class ExistsPopup(Popup):
     pass
 
 
+class SignUpErrorPopup(Popup):
+    pass
+
+
+class SignUpSuccessPopup(Popup):
+    pass
+
+
 class WindowManager(ScreenManager):
     def pass_info(self, barcode_data, category):
         self.add_widget(ManualWindow(barcode_data=barcode_data, category=category))
 
     def pass_categ(self, category):
         self.add_widget(ProductWindow(category=category))
+
+    def pass_name(self, name):
+        self.add_widget(MainWindow(firstname=name))
 
 
 # Designate Our .kv design file

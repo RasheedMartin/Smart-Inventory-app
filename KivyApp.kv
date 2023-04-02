@@ -1,4 +1,10 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
 WindowManager:
+    transition: FadeTransition()
+    HomeWindow:
+    SignUpWindow:
+    LoginWindow:
     MainWindow:
     CreationWindow:
     ManualWindow:
@@ -6,17 +12,262 @@ WindowManager:
     ProductWindow:
     EditWindow:
 
-<MainWindow>
-    name: "main"
-
+<HomeWindow>
+    name: "home"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
         padding: [0, 50]
 		Label:
 			text: "Smart Inventory Management App"
-			font_size:45
-			color: 'red'
+			font_size: '25dp'
+			color: 'white'
+			font_name: "Roboto-Bold"
+
+        GridLayout:
+            cols: 2
+            padding: [50, 70]
+            spacing: [20, 0]
+            Button:
+                text: "Login"
+                font_size: '20dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'gray'
+                color: 'white'
+                padding: [0, 50]
+                font_name: "Roboto-Regular"
+                on_release: root.manager.current = 'login'
+
+            Button:
+                text: "Sign Up"
+                font_size: '20dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'red'
+                color: 'white'
+                font_name: "Roboto-Regular"
+                on_release:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'signup'
+
+
+<SignUpWindow>
+    name: "signup"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+        padding: [20, -20, 20, 50]
+		Label:
+			text: "Sign Up"
+			font_size: '35dp'
+			color: 'white'
+            font_name: "Roboto-Bold"
+        GridLayout:
+            cols: 2
+            rows: 3
+            padding: [0, -20, 0, 20]
+            spacing: [0, 10]
+            Label:
+                text: "First Name"
+                font_size: '20dp'
+                color: 'white'
+                font_name: "Roboto-Bold"
+            TextInput:
+                id: firstname
+                multiline: False
+                font_size: '16dp'
+            Label:
+                text: "Last Name"
+                font_size: '20dp'
+                color: 'white'
+                font_name: "Roboto-Bold"
+            TextInput:
+                id: lastname
+                multiline: False
+                font_size: '16dp'
+            Label:
+                text: "Email Address"
+                font_size: '20dp'
+                color: 'white'
+                font_name: "Roboto-Bold"
+            TextInput:
+                id: email
+                multiline: False
+                font_size: '16dp'
+        GridLayout:
+            rows: 2
+            cols: 2
+            padding: [0, 10, 0, 20]
+            spacing: [0, 10]
+            Label:
+                text: "Username"
+                font_size: '20dp'
+                color: 'white'
+                font_name: "Roboto-Bold"
+            TextInput:
+                id: username
+                multiline: False
+                font_size: '16sp'
+            Label:
+                text: "Password"
+                font_size: '20dp'
+                color: 'white'
+                font_name: "Roboto-Bold"
+            TextInput:
+                id: password_text
+                multiline: False
+                font_size: '16dp'
+                password: True
+                password_mask: '*'
+        GridLayout:
+            cols: 2
+            padding: [0, 0, 0, 0]
+            spacing: [20, 0]
+            Button:
+                text: "Back"
+                font_size: '20dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'green'
+                color: 'white'
+                padding: [0, 50]
+                font_name: "Roboto-Regular"
+                on_release: root.manager.current = 'home'
+
+            Button:
+                text: "Sign Up"
+                font_size: '20dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'red'
+                color: 'white'
+                font_name: "Roboto-Regular"
+                on_release:
+                    root.manager.transition.direction = 'right'
+                    root.on_release_button()
+
+
+
+
+
+
+
+<LoginWindow>
+    name: "login"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+        padding: [50, 50]
+		Label:
+			text: "Login In"
+			font_size: '35dp'
+			color: 'white'
+            font_name: "Roboto-Bold"
+
+        GridLayout:
+            rows: 2
+            cols: 2
+            padding: [0, 40, 0, 50]
+            spacing: [0, 10]
+            Label:
+                text: "Username"
+                font_size: '20dp'
+                color: 'white'
+                font_name: "Roboto-Bold"
+            TextInput:
+                id: username
+                multiline: False
+                font_size: '16dp'
+            Label:
+                text: "Password"
+                font_size: '20dp'
+                color: 'white'
+                font_name: "Roboto-Bold"
+            TextInput:
+                id: password_text
+                multiline: False
+                font_size: '16dp'
+                password: True
+                password_mask: '*'
+        GridLayout:
+            cols: 2
+            padding: [0, 20, 0, 50]
+            spacing: [20, 0]
+            Button:
+                text: "Back"
+                font_size: '20dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'green'
+                color: 'white'
+                padding: [0, 50]
+                font_name: "Roboto-Regular"
+                on_release: root.manager.current = 'home'
+
+            Button:
+                text: "Login In"
+                font_size: '20dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'red'
+                color: 'white'
+                font_name: "Roboto-Regular"
+                on_release:
+                    root.manager.transition.direction = 'right'
+                    root.on_release_button()
+
+
+
+
+<MainWindow>
+    name: "main"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
+    RelativeLayout:
+        size_hint: None, None
+        size: 120, 50
+        pos_hint: {'right': 1, 'top': 1}
+        Button:
+            text: "Logout"
+            font_size: '25dp'
+            font_name: "Roboto-Bold"
+            size_hint: (1.12, 1.1)
+            background_color: 'red'
+            color: 'white'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.on_logout_button()
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+        padding: [0, 50]
+
+
+		Label:
+			text: "Smart Inventory Management App"
+			font_size: '25dp'
+			color: 'white'
+			font_name: "Roboto-Bold"
+
 
 
 
@@ -57,7 +308,11 @@ WindowManager:
 
 <CreationWindow>
     name: "creation"
-
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -104,6 +359,11 @@ WindowManager:
 
 <ManualWindow>
     name: "manualform"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -153,6 +413,11 @@ WindowManager:
 
 <SelectionWindow>:
     name: "selection"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -198,6 +463,11 @@ WindowManager:
 
 <ProductWindow>:
     name: "product"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -257,6 +527,11 @@ WindowManager:
 
 <EditWindow>
     name: "edit"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/black_background_app.jpg'
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -274,7 +549,29 @@ WindowManager:
         Button:
             text: "Close"
             on_press: root.dismiss()
+<SignupErrorPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Sign Up ERROR"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "There has been an Error. All Fields are Required!!"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
 
+<SignUpSuccessPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Sign Up Success"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "You have been successfully Signed Up"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
 
 <SuccessPopup>:
     size_hint: .5 , .5
