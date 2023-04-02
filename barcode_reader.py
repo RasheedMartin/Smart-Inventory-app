@@ -20,7 +20,8 @@ def scan_barcodes():
                 # Draw a rectangle around the barcode and display its data
                 cv2.rectangle(frame, (obj.rect.left, obj.rect.top),
                               (obj.rect.left + obj.rect.width, obj.rect.top + obj.rect.height), (255, 0, 0), 2)
-                cv2.putText(frame, str(obj.data.decode('utf-8')), (obj.rect.left, obj.rect.top), font, 2, (255, 255, 255),
+                cv2.putText(frame, str(obj.data.decode('utf-8')), (obj.rect.left, obj.rect.top), font, 2,
+                            (255, 255, 255),
                             2, cv2.LINE_AA)
                 barcode_data = obj.data.decode('utf-8')  # Save the decoded data to the variable
             # Display the processed frame
@@ -119,7 +120,6 @@ def update_database(name, barcode, price, category):
 
     # Close the connection
     conn.close()
-    return
 
 
 # update_database(sql_name,name, barcode_result, price)
