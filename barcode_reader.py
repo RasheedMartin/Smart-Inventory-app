@@ -91,7 +91,8 @@ def create_database():
                       (UPC TEXT PRIMARY KEY,
                        Name TEXT,
                        Price REAL,
-                       Category TEXT)''')
+                       Category 
+                       UserID TEXT)''')
 
     # Commit the table creation
     conn.commit()
@@ -100,19 +101,19 @@ def create_database():
     conn.close()
 
     print(
-        f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', 'Price' and 'Category'.")
+        f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', 'Price', 'UserID' and 'Category'.")
 
 
 # create_database()
 
 
-def update_database(name, barcode, price, category):
+def update_database(name, barcode, price, category,userid):
     conn = sqlite3.connect("barcode_data.db")
 
     cursor = conn.cursor()
 
     # Insert data into the table
-    cursor.execute("INSERT INTO products (UPC, Name, Price, Category) VALUES (?, ?, ?, ?)",
+    cursor.execute("INSERT INTO products (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)",
                    (barcode, name, price, category))
 
     # Commit the changes
@@ -145,6 +146,49 @@ def get_unique_categories():
     conn.close()
     categories = [r[0] for r in result]
     return categories
+
+
+def create_user_database():
+    # Prompt the user for a database name
+    dbname = 'user_data'
+
+    # Create a connection to the database
+    conn = sqlite3.connect(dbname + ".db")
+
+    # Create a cursor object
+    cursor = conn.cursor()
+
+    # Create a table with three columns
+    cursor.execute('''CREATE TABLE users
+                   (username TEXT PRIMARY KEY, 
+                    password TEXT)''')
+
+    # Commit the table creation
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+
+    print(
+        f"Database {dbname}.db created with table 'users' containing columns 'username' and 'password'")
+
+def add_user(username, password):
+    # create a connection to the database
+    conn = sqlite3.connect('user_data.db')
+
+    # create a cursor object
+    c = conn.cursor()
+
+    # insert the new user into the users table
+    c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+
+    # commit changes to the database and close the connection
+    conn.commit()
+    conn.close()
+
+
+
+
 
 
 if __name__ == "__main__":
