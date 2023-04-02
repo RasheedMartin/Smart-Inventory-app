@@ -161,7 +161,10 @@ def create_user_database():
     # Create a table with three columns
     cursor.execute('''CREATE TABLE users
                    (username TEXT PRIMARY KEY, 
-                    password TEXT)''')
+                    password TEXT,
+                    first name TEXT,
+                    last name TEXT,
+                    email TEXT)''')
 
     # Commit the table creation
     conn.commit()
@@ -172,7 +175,7 @@ def create_user_database():
     print(
         f"Database {dbname}.db created with table 'users' containing columns 'username' and 'password'")
 
-def add_user(username, password):
+def add_user(username, password, first_name, last_name, email):
     # create a connection to the database
     conn = sqlite3.connect('user_data.db')
 
@@ -180,7 +183,8 @@ def add_user(username, password):
     c = conn.cursor()
 
     # insert the new user into the users table
-    c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+    c.execute("INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?,?,?,?)", 
+              (username, password, first_name, last_name, email))
 
     # commit changes to the database and close the connection
     conn.commit()
