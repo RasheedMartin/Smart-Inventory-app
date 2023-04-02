@@ -24,7 +24,7 @@ WindowManager:
 		size: root.width, root.height
         padding: [0, 50]
 		Label:
-			text: "Smart Inventory Management App"
+			text: "Smart Inventory\n\nManagement App"
 			font_size: '25dp'
 			color: 'white'
 			font_name: "Roboto-Bold"
@@ -139,7 +139,7 @@ WindowManager:
                 font_size: '20dp'
                 size_hint: (.5, .3)
                 pos_hint: {'center_x': .5, 'center_y': .5}
-                background_color: 'green'
+                background_color: 'gray'
                 color: 'white'
                 padding: [0, 50]
                 font_name: "Roboto-Regular"
@@ -175,7 +175,7 @@ WindowManager:
 		size: root.width, root.height
         padding: [50, 50]
 		Label:
-			text: "Login In"
+			text: "Login"
 			font_size: '35dp'
 			color: 'white'
             font_name: "Roboto-Bold"
@@ -214,14 +214,14 @@ WindowManager:
                 font_size: '20dp'
                 size_hint: (.5, .3)
                 pos_hint: {'center_x': .5, 'center_y': .5}
-                background_color: 'green'
+                background_color: 'gray'
                 color: 'white'
                 padding: [0, 50]
                 font_name: "Roboto-Regular"
                 on_release: root.manager.current = 'home'
 
             Button:
-                text: "Login In"
+                text: "Login"
                 font_size: '20dp'
                 size_hint: (.5, .3)
                 pos_hint: {'center_x': .5, 'center_y': .5}
@@ -263,7 +263,7 @@ WindowManager:
 
 
 		Label:
-			text: "Smart Inventory Management App"
+			text: "Smart Inventory\n\nManagement App"
 			font_size: '25dp'
 			color: 'white'
 			font_name: "Roboto-Bold"
@@ -276,31 +276,36 @@ WindowManager:
             padding: [0, 50]
 			Label:
 				text: "Create List"
-				font_size:25
+				font_size:'22dp'
+			    font_name: 'Roboto-Regular'
+
 			CheckBox:
 				group: "Actions"
 				on_active: root.checkbox_click(self, self.active, "Create List")
 
 			Label:
 				text: "Edit List"
-				font_size:25
+				font_size:'22dp'
+			    font_name: 'Roboto-Regular'
 			CheckBox:
 				group: "Actions"
 				on_active: root.checkbox_click(self, self.active, "Edit List")
 
 			Label:
 				text: "Stock Prediction"
-				font_size:25
+				font_size:'22dp'
+			    font_name: 'Roboto-Regular'
 			CheckBox:
 				group: "Actions"
 				on_active: root.checkbox_click(self, self.active, "Stock Prediction")
 
 		Button:
 			text: "Submit"
-			font_size:32
+			font_size:'25dp'
+			font_name: 'Roboto-Regular'
 			size_hint: (.5, .3)
 			pos_hint: {'center_x': .5, 'center_y': .5}
-			background_color: 'green'
+			background_color: 'red'
 			color: 'white'
 			on_press:
 			    root.manager.transition.direction = 'left'
@@ -313,49 +318,70 @@ WindowManager:
             pos: self.pos
             size: self.size
             source: 'images/black_background_app.jpg'
+    RelativeLayout:
+        size_hint: None, None
+        size: 120, 50
+        pos_hint: {'right': 1, 'top': 1}
+        Button:
+            text: "Logout"
+            font_size: '25dp'
+            font_name: "Roboto-Bold"
+            size_hint: (1.12, 1.1)
+            background_color: 'red'
+            color: 'white'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.on_logout_button()
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
         padding: [0, 40]
 		Label:
 			text: "Add List"
-			font_size:84
-			color: 'red'
+			font_size:'35dp'
+			color: 'white'
 			padding: [0, 50]
+			font_name: 'Roboto-Bold'
 
         GridLayout:
 			cols:2
-            padding: [50, 80]
+            padding: [50, 65]
+            spacing: [10, 0]
             Label:
                 text: "Enter List Name"
-                font_size: 25
+                font_size: '20dp'
 
             TextInput:
-                id: newlist
+                id: category
                 multiline: False
-                font_size: 22
+                font_size: '20dp'
+
+        GridLayout:
+            cols: 2
+            padding: [50, 50]
+            spacing: [20, 0]
+            Button:
+                text: "Back"
+                font_size: '25dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'grey'
+                color: 'white'
+                on_release:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'main'
+
+            Button:
+                text: "Add"
+                font_size:'25dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'red'
+                color: 'white'
+                padding: [0, 50]
+                on_release: root.on_release_button()
 
 
-		Button:
-			text: "Add"
-			font_size:32
-			size_hint: (.5, .3)
-			pos_hint: {'center_x': .5, 'center_y': .5}
-			background_color: 'green'
-			color: 'white'
-			padding: [0, 50]
-			on_release: root.on_release_button()
-
-        Button:
-            text: "Back"
-            font_size: 32
-            size_hint: (.5, .3)
-            pos_hint: {'center_x': .5, 'center_y': .5}
-			background_color: 'red'
-			color: 'white'
-			on_release:
-			    root.manager.transition.direction = 'right'
-			    root.manager.current = 'main'
 
 <ManualWindow>
     name: "manualform"
@@ -364,6 +390,20 @@ WindowManager:
             pos: self.pos
             size: self.size
             source: 'images/black_background_app.jpg'
+    RelativeLayout:
+        size_hint: None, None
+        size: 120, 50
+        pos_hint: {'right': 1, 'top': 1}
+        Button:
+            text: "Logout"
+            font_size: '25dp'
+            font_name: "Roboto-Bold"
+            size_hint: (1.12, 1.1)
+            background_color: 'red'
+            color: 'white'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.on_logout_button()
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -371,45 +411,61 @@ WindowManager:
 
 		Label:
 			text: "Manually Add Details"
-			font_size:32
-			color: 'red'
+			font_size:'25dp'
+			color: 'white'
+			font_name: 'Roboto-Bold'
 
         GridLayout:
 			cols:2
-			padding: [50, 55]
+			padding: [50, 40]
+			spacing: [30, 0]
 
             Label:
                 text: "Enter Object Name"
-                font_size: 25
+                font_size: '20dp'
 
             TextInput:
                 id: newName
                 multiline: False
-                font_size: 20
+                font_size: '18dp'
         GridLayout:
             cols: 2
-            padding: [50, 55]
+            padding: [50, 40]
+            spacing: [30, 0]
 
             Label:
                 text: "Enter Object Price"
-                font_size: 25
+                font_size: '20dp'
 
             TextInput:
                 id: newPrice
                 multiline: False
-                font_size: 20
-
-		Button:
-			text: "Submit"
-			font_size:32
-			size_hint: (.5, .3)
-			pos_hint: {'center_x': .5, 'center_y': .5}
-			background_color: 'green'
-			color: 'white'
-			on_release:
-			    root.category = root.manager.get_screen("creation").category
-			    root.barcode_data = root.manager.get_screen("product").barcode_data
-			    root.on_release_button()
+                font_size: '18dp'
+        GridLayout:
+            cols: 2
+            padding: [50, 40]
+            spacing: [20, 0]
+            Button:
+                text: "Back"
+                font_size: '20dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'gray'
+                color: 'white'
+                padding: [0, 50]
+                font_name: "Roboto-Regular"
+                on_release: root.manager.current = 'product'
+            Button:
+                text: "Submit"
+                font_size:'20dp'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'red'
+                color: 'white'
+                on_release:
+                    root.category = root.manager.get_screen("creation").category
+                    root.barcode_data = root.manager.get_screen("product").barcode_data
+                    root.on_release_button()
 
 <SelectionWindow>:
     name: "selection"
@@ -418,6 +474,20 @@ WindowManager:
             pos: self.pos
             size: self.size
             source: 'images/black_background_app.jpg'
+    RelativeLayout:
+        size_hint: None, None
+        size: 120, 50
+        pos_hint: {'right': 1, 'top': 1}
+        Button:
+            text: "Logout"
+            font_size: '25dp'
+            font_name: "Roboto-Bold"
+            size_hint: (1.12, 1.1)
+            background_color: 'red'
+            color: 'white'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.on_logout_button()
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -425,8 +495,8 @@ WindowManager:
 
 		Label:
 		    text: "Selection List to Edit"
-			font_size:32
-			color: 'red'
+			font_size:'25dp'
+			color: 'white'
         GridLayout:
 			cols:2
 			padding: [50, 55]
@@ -461,6 +531,7 @@ WindowManager:
                     root.manager.transition.direction = 'right'
                     root.manager.current = 'main'
 
+
 <ProductWindow>:
     name: "product"
     canvas.before:
@@ -468,6 +539,20 @@ WindowManager:
             pos: self.pos
             size: self.size
             source: 'images/black_background_app.jpg'
+    RelativeLayout:
+        size_hint: None, None
+        size: 120, 50
+        pos_hint: {'right': 1, 'top': 1}
+        Button:
+            text: "Logout"
+            font_size: '25dp'
+            font_name: "Roboto-Bold"
+            size_hint: (1.12, 1.1)
+            background_color: 'red'
+            color: 'white'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.on_logout_button()
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -475,55 +560,67 @@ WindowManager:
 
         Label:
 			text: "Add Product"
-			font_size:84
-			color: 'red'
+			font_size:'35dp'
+			color: 'white'
 			padding: [0, 50]
+			font_name: 'Roboto-Regular'
 
         GridLayout:
-			cols:3
-            padding: [50, 70]
+			rows:3
+            padding: [50, 0]
+            spacing: [10, 20]
             Label:
                 text: "Enter UPC Number"
-                font_size: 25
+                font_size: '25dp'
+			    font_name: 'Roboto-Regular'
 
             TextInput:
-                id: newitem
+                id: barcode
                 multiline: False
-                font_size: 22
+                font_size: '20dp'
+			    font_name: 'Roboto-Regular'
 
             Button:
                 text: "Submit"
-                font_size:22
-                size_hint: (.5, .3)
+                font_size: '25dp'
+			    font_name: 'Roboto-Regular'
+                size_hint: (.5, .7)
                 pos_hint: {'center_x': .5, 'center_y': .5}
-                background_color: 'green'
+                background_color: 'red'
                 color: 'white'
                 padding: [0, 50]
                 on_release:
                     root.category = root.manager.get_screen("creation").category
                     root.on_release_button()
 
+        GridLayout:
+            cols: 2
+            padding: [50, 50]
+            spacing: [20, 0]
+            Button:
+                text: "Back"
+                font_size: '25dp'
+                font_name: 'Roboto-Regular'
+                size_hint: (.5, .3)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'gray'
+                color: 'white'
+                on_release:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'main'
 
-		Button:
-			text: "Launch Camera"
-			font_size:32
-			size_hint: (.5, .3)
-			pos_hint: {'center_x': .5, 'center_y': .5}
-			background_color: 'green'
-			color: 'white'
-			padding: [0, 50]
-			on_release: root.launch_camera()
+            Button:
+                text: "Launch\nCamera"
+                font_size:'25dp'
+                font_name: 'Roboto-Regular'
+                size_hint: (.5, .7)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_color: 'red'
+                color: 'white'
+                padding: [0, 50]
+                on_release: root.launch_camera()
 
-        Button:
-            text: "Back"
-            font_size: 32
-            size_hint: (.5, .3)
-            pos_hint: {'center_x': .5, 'center_y': .5}
-			background_color: 'red'
-			color: 'white'
-			on_release:
-                root.manager.transition.direction = 'right'
-			    root.manager.current = 'main'
+
 
 <EditWindow>
     name: "edit"
@@ -532,6 +629,20 @@ WindowManager:
             pos: self.pos
             size: self.size
             source: 'images/black_background_app.jpg'
+    RelativeLayout:
+        size_hint: None, None
+        size: 120, 50
+        pos_hint: {'right': 1, 'top': 1}
+        Button:
+            text: "Logout"
+            font_size: '25dp'
+            font_name: "Roboto-Bold"
+            size_hint: (1.12, 1.1)
+            background_color: 'red'
+            color: 'white'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.on_logout_button()
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height

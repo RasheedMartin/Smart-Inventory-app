@@ -44,7 +44,7 @@ class SignUpWindow(Screen):
             self.ids.password_text.text = ''
             SignUpSuccessPopup().open()
 
-            self.manager.current = 'main'
+            self.manager.current = 'login'
 
 
 class LoginWindow(Screen):
@@ -93,8 +93,11 @@ class CreationWindow(Screen):
     category = StringProperty('')
 
     def on_release_button(self):
-        self.category = self.ids.newlist.text
+        self.category = self.ids.category.text
         self.manager.current = 'product'
+
+    def on_logout_button(self):
+        self.manager.current = 'home'
 
 
 class ManualWindow(Screen):
@@ -108,9 +111,13 @@ class ManualWindow(Screen):
             update_database(name, self.barcode_data, price, self.category)
             SuccessPopup().open()
 
+    def on_logout_button(self):
+        self.manager.current = 'home'
+
 
 class SelectionWindow(Screen):
-    pass
+    def on_logout_button(self):
+        self.manager.current = 'home'
 
 
 class ProductWindow(Screen):
@@ -119,8 +126,8 @@ class ProductWindow(Screen):
 
     def on_release_button(self):
         # barcode_data = "021200523588"
-        self.barcode_data = self.ids.newitem.text
-        self.ids.newitem.text = ''
+        self.barcode_data = self.ids.barcode.text
+        self.ids.barcode.text = ''
         self.data_retrieval(self.barcode_data)
 
     def launch_camera(self):
@@ -155,9 +162,13 @@ class ProductWindow(Screen):
                 update_database(name, barcode_data, price, self.category)
                 SuccessPopup().open()
 
+    def on_logout_button(self):
+        self.manager.current = 'home'
+
 
 class EditWindow(Screen):
-    pass
+    def on_logout_button(self):
+        self.manager.current = 'home'
 
 
 ######################## Popup Section  #####################################
