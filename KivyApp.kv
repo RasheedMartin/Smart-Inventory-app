@@ -4,6 +4,7 @@ WindowManager:
     ManualWindow:
     SelectionWindow:
     ProductWindow:
+    EditWindow:
 
 <MainWindow>
     name: "main"
@@ -50,7 +51,9 @@ WindowManager:
 			pos_hint: {'center_x': .5, 'center_y': .5}
 			background_color: 'green'
 			color: 'white'
-			on_press: root.on_press_button()
+			on_press:
+			    root.manager.transition.direction = 'left'
+			    root.on_press_button()
 
 <CreationWindow>
     name: "creation"
@@ -95,7 +98,9 @@ WindowManager:
             pos_hint: {'center_x': .5, 'center_y': .5}
 			background_color: 'red'
 			color: 'white'
-			on_release: root.manager.current = 'main'
+			on_release:
+			    root.manager.transition.direction = 'right'
+			    root.manager.current = 'main'
 
 <ManualWindow>
     name: "manualform"
@@ -141,7 +146,10 @@ WindowManager:
 			pos_hint: {'center_x': .5, 'center_y': .5}
 			background_color: 'green'
 			color: 'white'
-			on_release: root.on_release_button1()
+			on_release:
+			    root.category = root.manager.get_screen("creation").category
+			    root.barcode_data = root.manager.get_screen("product").barcode_data
+			    root.on_release_button()
 
 <SelectionWindow>:
     name: "selection"
@@ -158,11 +166,20 @@ WindowManager:
 			cols:2
 			padding: [50, 55]
 
-
+            Button:
+                pos_hint:{'center_x': .5, 'center_y': .5}
+                id: drop_cat_menu
+                text: 'Select List'
+                size_hint_y: None
+                height: 44
+                on_parent: drop_content.dismiss()
+                on_release: drop_content.open(self)
             DropDown:
                 id: drop_content
                 # on_parent: self.dismiss()
-                on_select: btn.text = f'{args[1]}' #
+                on_select:
+                    drop_content.text = f'{args[1]}'
+                    root.manager.current = 'edit'
                 max_height: 120
 
         GridLayout:
@@ -175,7 +192,9 @@ WindowManager:
 
             Button:
                 text: "Back"
-                on_release: root.manager.current = 'main'
+                on_release:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'main'
 
 <ProductWindow>:
     name: "product"
@@ -210,7 +229,9 @@ WindowManager:
                 background_color: 'green'
                 color: 'white'
                 padding: [0, 50]
-                on_release: root.on_release_button()
+                on_release:
+                    root.category = root.manager.get_screen("creation").category
+                    root.on_release_button()
 
 
 		Button:
@@ -230,4 +251,52 @@ WindowManager:
             pos_hint: {'center_x': .5, 'center_y': .5}
 			background_color: 'red'
 			color: 'white'
-			on_release: root.manager.current = 'main'
+			on_release:
+                root.manager.transition.direction = 'right'
+			    root.manager.current = 'main'
+
+<EditWindow>
+    name: "edit"
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+		padding: [0, 50]
+
+
+<ErrorPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "ERROR"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "There has been an Error"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
+
+
+<SuccessPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Success"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: success_label
+            text: "That was a success"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
+
+<ExistsPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Already Exists"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "This UPC already exists"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()

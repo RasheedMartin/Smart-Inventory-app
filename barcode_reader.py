@@ -148,4 +148,5 @@ def get_unique_categories():
 
 
 if __name__ == "__main__":
-    get_unique_categories()
+    # get_unique_categories()
+    create_database()
