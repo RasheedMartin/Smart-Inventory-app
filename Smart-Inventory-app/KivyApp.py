@@ -9,6 +9,7 @@ from kivy.lang import Builder
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
 from kivy.core.window import Window
+from kivy.uix.boxlayout import BoxLayout
 from kivy.core.image import Image
 # from kivy.graphics import BorderImage
 from kivy.graphics import Color, Rectangle
@@ -43,22 +44,26 @@ class SignUpWindow(Screen):
             self.ids.email.text = ''
             self.ids.password_text.text = ''
             SignUpSuccessPopup().open()
-
+            # self.manager.userid = [insert function]
             self.manager.current = 'login'
 
 
 class LoginWindow(Screen):
     def on_release_button(self):
         self.manager.current = 'main'
-
-
-
-
+        """username, password = samplemethod(self.ids.username_login.text, self.ids.password_login.text)
+            if not username:  
+                UsernameErrorPopup().open()
+            elif not password:
+                PasswordErrorPopup().open()
+            else:
+                self.manager.current = 'main'
+            
+        
+        """
 
 
 class MainWindow(Screen):
-    firstname = StringProperty('')
-
     checks = []
     action = ' '
 
@@ -94,10 +99,10 @@ class MainWindow(Screen):
 
 
 class CreationWindow(Screen):
-    category = StringProperty('')
+    # category = StringProperty('')
 
     def on_release_button(self):
-        self.category = self.ids.category.text
+        self.manager.category = self.ids.category.text
         self.manager.current = 'product'
 
     def on_logout_button(self):
@@ -106,13 +111,14 @@ class CreationWindow(Screen):
 
 class ManualWindow(Screen):
     barcode_data = StringProperty("")
-    category = StringProperty("")
+
+    # category = StringProperty("")
 
     def on_release_button(self):
         name = self.ids.newName.text
         price = self.ids.newPrice.text
         if self.barcode_data is not None:
-            update_database(name, self.barcode_data, price, self.category)
+            update_database(name, self.barcode_data, price, self.manager.category, self.manager.userid)
             SuccessPopup().open()
 
     def on_logout_button(self):
@@ -125,7 +131,7 @@ class SelectionWindow(Screen):
 
 
 class ProductWindow(Screen):
-    category = StringProperty('Test')
+    # category = StringProperty('Test')
     barcode_data = StringProperty('')
 
     def on_release_button(self):
@@ -163,7 +169,7 @@ class ProductWindow(Screen):
             # It is successful and update the database
             else:
                 # Display a successful popup window
-                update_database(name, barcode_data, price, self.category)
+                update_database(name, barcode_data, price, self.manager.category, self.manager.userid)
                 SuccessPopup().open()
 
     def on_logout_button(self):
@@ -196,7 +202,14 @@ class SignUpSuccessPopup(Popup):
     pass
 
 
+class Row(BoxLayout):
+    pass
+
+
 class WindowManager(ScreenManager):
+    userid = StringProperty('')
+    category = StringProperty('')
+
     def pass_info(self, barcode_data, category):
         self.add_widget(ManualWindow(barcode_data=barcode_data, category=category))
 

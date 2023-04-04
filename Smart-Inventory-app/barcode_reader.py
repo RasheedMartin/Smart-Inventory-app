@@ -91,7 +91,7 @@ def create_database():
                       (UPC TEXT PRIMARY KEY,
                        Name TEXT,
                        Price REAL,
-                       Category 
+                       Category TEXT, 
                        UserID TEXT)''')
 
     # Commit the table creation
@@ -115,7 +115,7 @@ def update_database(name, barcode, price, category, userid):
 
     # Insert data into the table
     cursor.execute("INSERT INTO products (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)",
-                   (barcode, name, price, category))
+                   (barcode, name, price, category, userid))
 
     # Commit the changes
     conn.commit()
@@ -160,13 +160,13 @@ def create_user_database():
     cursor = conn.cursor()
 
     # Create a table with three columns
-    cursor.execute('''CREATE TABLE IF NOT EXISTS users
+    cursor.execute('''CREATE TABLE IF NOT EXISTS 'users'
                    (username TEXT PRIMARY KEY, 
                     password TEXT,
                     firstname TEXT,
                     lastname TEXT,
                     email TEXT, 
-                    userid UNIQUE REAL)''')
+                    userid TEXT UNIQUE)''')
 
     # Commit the table creation
     conn.commit()
@@ -184,10 +184,10 @@ def add_user(username, password, first_name, last_name, email):
 
     # create a cursor object
     c = conn.cursor()
-
+    userid = '1'
     # insert the new user into the users table
-    c.execute("INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?,?,?,?)",
-              (username, password, first_name, last_name, email))
+    c.execute("INSERT INTO users (username, password, first_name, last_name, email, userid) VALUES (?, ?,?,?,?)",
+              (username, password, first_name, last_name, email, userid))
 
     # commit changes to the database and close the connection
     conn.commit()

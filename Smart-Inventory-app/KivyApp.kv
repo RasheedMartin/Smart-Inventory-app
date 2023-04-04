@@ -191,7 +191,7 @@ WindowManager:
                 color: 'white'
                 font_name: "Roboto-Bold"
             TextInput:
-                id: username
+                id: username_login
                 multiline: False
                 font_size: '16dp'
             Label:
@@ -200,7 +200,7 @@ WindowManager:
                 color: 'white'
                 font_name: "Roboto-Bold"
             TextInput:
-                id: password_text
+                id: password_login
                 multiline: False
                 font_size: '16dp'
                 password: True
@@ -463,9 +463,20 @@ WindowManager:
                 background_color: 'red'
                 color: 'white'
                 on_release:
-                    root.category = root.manager.get_screen("creation").category
                     root.barcode_data = root.manager.get_screen("product").barcode_data
                     root.on_release_button()
+<Row>
+
+    orientation: "horizontal"
+
+    Button:
+        text: "name"
+    Button:
+        text: "type"
+    Button:
+        text: "content"
+    Button:
+        text: "xyz"
 
 <SelectionWindow>:
     name: "selection"
@@ -590,7 +601,6 @@ WindowManager:
                 color: 'white'
                 padding: [0, 50]
                 on_release:
-                    root.category = root.manager.get_screen("creation").category
                     root.on_release_button()
 
         GridLayout:
@@ -643,10 +653,17 @@ WindowManager:
             on_release:
                 root.manager.transition.direction = 'left'
                 root.on_logout_button()
-    BoxLayout:
-		orientation: "vertical"
-		size: root.width, root.height
-		padding: [0, 50]
+    ScrollView:
+        GridLayout
+            id: container
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            row_force_default: True
+            row_default_height: dp(26)
+            Button:
+                text: "Rasheed"
+
 
 
 <ErrorPopup>:
