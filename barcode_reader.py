@@ -101,13 +101,14 @@ def create_database():
     conn.close()
 
     print(
-        f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', 'Price', 'UserID' and 'Category'.")
+        f"Database {dbname}.db created with table 'products' containing columns 'UPC', 'Name', 'Price', 'UserID' and "
+        f"'Category'.")
 
 
 # create_database()
 
 
-def update_database(name, barcode, price, category,userid):
+def update_database(name, barcode, price, category, userid):
     conn = sqlite3.connect("barcode_data.db")
 
     cursor = conn.cursor()
@@ -159,12 +160,13 @@ def create_user_database():
     cursor = conn.cursor()
 
     # Create a table with three columns
-    cursor.execute('''CREATE TABLE users
+    cursor.execute('''CREATE TABLE IF NOT EXISTS users
                    (username TEXT PRIMARY KEY, 
                     password TEXT,
-                    first name TEXT,
-                    last name TEXT,
-                    email TEXT)''')
+                    firstname TEXT,
+                    lastname TEXT,
+                    email TEXT, 
+                    userid UNIQUE REAL)''')
 
     # Commit the table creation
     conn.commit()
@@ -175,6 +177,7 @@ def create_user_database():
     print(
         f"Database {dbname}.db created with table 'users' containing columns 'username' and 'password'")
 
+
 def add_user(username, password, first_name, last_name, email):
     # create a connection to the database
     conn = sqlite3.connect('user_data.db')
@@ -183,16 +186,12 @@ def add_user(username, password, first_name, last_name, email):
     c = conn.cursor()
 
     # insert the new user into the users table
-    c.execute("INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?,?,?,?)", 
+    c.execute("INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?,?,?,?)",
               (username, password, first_name, last_name, email))
 
     # commit changes to the database and close the connection
     conn.commit()
     conn.close()
-
-
-
-
 
 
 if __name__ == "__main__":

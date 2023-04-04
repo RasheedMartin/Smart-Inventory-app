@@ -1,7 +1,7 @@
 from kivy.uix.popup import Popup
 
 from barcode_reader import scan_barcodes, \
-    get_price, create_database, update_database, get_unique_categories, checking
+    get_price, create_database, update_database, get_unique_categories, checking, create_user_database
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -50,6 +50,10 @@ class SignUpWindow(Screen):
 class LoginWindow(Screen):
     def on_release_button(self):
         self.manager.current = 'main'
+
+
+
+
 
 
 class MainWindow(Screen):
@@ -232,5 +236,6 @@ class MainApp(App):
 
 if __name__ == '__main__':
     create_database()
+    create_user_database()
     app = MainApp()
     app.run()
