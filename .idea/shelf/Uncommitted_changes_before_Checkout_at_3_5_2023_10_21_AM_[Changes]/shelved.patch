@@ -1,0 +1,125 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"872cbe2c-e426-4936-bf83-7b194371e1da\" name=\"Changes\" comment=\"Recent App Change\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/barcode\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/barcode\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/webscraping.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/webscraping.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"RunManager\" selected=\"Python.jk\">\r\n    <configuration default=\"true\" type=\"DjangoTestsConfigurationType\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"TARGET\" value=\"\" />\r\n      <option name=\"SETTINGS_FILE\" value=\"\" />\r\n      <option name=\"CUSTOM_SETTINGS\" value=\"false\" />\r\n      <option name=\"USE_OPTIONS\" value=\"false\" />\r\n      <option name=\"OPTIONS\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"PyBehaveRunConfigurationType\" factoryName=\"Behave\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"ADDITIONAL_ARGS\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"PythonConfigurationType\" factoryName=\"Python\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"true\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"barcode\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"C:\\Users\\fresh\\AppData\\Local\\Programs\\Python\\Python39\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/barcode\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"jk\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"C:\\Users\\fresh\\AppData\\Local\\Programs\\Python\\Python39\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/jk.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"true\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"webscraping\" type=\"PythonConfigurationType\" factoryName=\"Python\" nameIsGenerated=\"true\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"C:\\Users\\fresh\\AppData\\Local\\Programs\\Python\\Python39\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/webscraping.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"true\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"Python.FlaskServer\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"Tox\" factoryName=\"Tox\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"docs\" factoryName=\"Docutils task\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"docutils_input_file\" value=\"\" />\r\n      <option name=\"docutils_output_file\" value=\"\" />\r\n      <option name=\"docutils_params\" value=\"\" />\r\n      <option name=\"docutils_task\" value=\"\" />\r\n      <option name=\"docutils_open_in_browser\" value=\"false\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"docs\" factoryName=\"Sphinx task\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"docutils_input_file\" value=\"\" />\r\n      <option name=\"docutils_output_file\" value=\"\" />\r\n      <option name=\"docutils_params\" value=\"\" />\r\n      <option name=\"docutils_task\" value=\"\" />\r\n      <option name=\"docutils_open_in_browser\" value=\"false\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"tests\" factoryName=\"Doctests\">\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <module name=\"\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"\" />\r\n      <option name=\"CLASS_NAME\" value=\"\" />\r\n      <option name=\"METHOD_NAME\" value=\"\" />\r\n      <option name=\"FOLDER_NAME\" value=\"\" />\r\n      <option name=\"TEST_TYPE\" value=\"TEST_SCRIPT\" />\r\n      <option name=\"PATTERN\" value=\"\" />\r\n      <option name=\"USE_PATTERN\" value=\"false\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Python.webscraping\" />\r\n      <item itemvalue=\"Python.jk\" />\r\n      <item itemvalue=\"Python.barcode\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.jk\" />\r\n        <item itemvalue=\"Python.barcode\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Added in the webscraping file\">\r\n      <created>1676841799735</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1676841799736</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Added in the webscraping file\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added in the webscraping file\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$GUI.coverage\" NAME=\"GUI Coverage Results\" MODIFIED=\"1676737756872\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$barcode.coverage\" NAME=\"barcode Coverage Results\" MODIFIED=\"1676844633329\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$KivyApp.coverage\" NAME=\"KivyApp Coverage Results\" MODIFIED=\"1676756161922\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/Smart_Inventory_app$webscraping.coverage\" NAME=\"webscraping Coverage Results\" MODIFIED=\"1676841968195\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,10 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Recent App Change">
++    <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Added in the webscraping file">
++      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_5_2023_9_49_AM_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_5_2023_9_49_AM_[Changes]1/shelved.patch" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Desktop/SIA/Smart-Inventory-app-main/barcode.py" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/barcode" beforeDir="false" afterPath="$PROJECT_DIR$/barcode" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/webscraping.py" beforeDir="false" afterPath="$PROJECT_DIR$/webscraping.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/webscraping.py" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -25,7 +29,7 @@
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+-  <component name="RunManager" selected="Python.jk">
++  <component name="RunManager" selected="Python.barcode">
+     <configuration default="true" type="DjangoTestsConfigurationType">
+       <option name="INTERPRETER_OPTIONS" value="" />
+       <option name="PARENT_ENVS" value="true" />
+@@ -125,6 +129,9 @@
+     <configuration name="webscraping" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+       <option name="INTERPRETER_OPTIONS" value="" />
+       <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
+       <option name="SDK_HOME" value="C:\Users\fresh\AppData\Local\Programs\Python\Python39\python.exe" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+       <option name="IS_MODULE_SDK" value="false" />
+@@ -225,8 +232,8 @@
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Python.jk" />
+         <item itemvalue="Python.barcode" />
++        <item itemvalue="Python.jk" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -258,7 +265,7 @@
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/Smart_Inventory_app$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1676737756872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+-    <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode.coverage" NAME="barcode Coverage Results" MODIFIED="1676844633329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
++    <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode.coverage" NAME="barcode Coverage Results" MODIFIED="1678029420535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+     <SUITE FILE_PATH="coverage/Smart_Inventory_app$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1676756161922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+     <SUITE FILE_PATH="coverage/Smart_Inventory_app$webscraping.coverage" NAME="webscraping Coverage Results" MODIFIED="1676841968195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+   </component>
+Index: barcode
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import cv2\r\nimport numpy as np\r\nimport pyzbar.pyzbar as pyzbar\r\nfrom webscraping import main\r\n\r\n\r\n# Define a function to capture video from your camera and process each frame\r\ndef scan_barcodes():\r\n    cap = cv2.VideoCapture(0)  # 0 means the default camera on your device\r\n    font = cv2.FONT_HERSHEY_PLAIN\r\n    barcode_data = None  # Create a variable to store the decoded barcode data\r\n    while barcode_data is None:  # Keep scanning until a barcode is successfully decoded\r\n        _, frame = cap.read()  # Read each frame from the camera\r\n        decoded_objects = pyzbar.decode(frame)  # Decode any barcodes in the frame\r\n        for obj in decoded_objects:\r\n            # Draw a rectangle around the barcode and display its data\r\n            cv2.rectangle(frame, (obj.rect.left, obj.rect.top),\r\n                          (obj.rect.left + obj.rect.width, obj.rect.top + obj.rect.height), (255, 0, 0), 2)\r\n            cv2.putText(frame, str(obj.data.decode('utf-8')), (obj.rect.left, obj.rect.top), font, 2, (255, 255, 255),\r\n                        2, cv2.LINE_AA)\r\n            barcode_data = obj.data.decode('utf-8')  # Save the decoded data to the variable\r\n        # Display the processed frame\r\n        cv2.imshow(\"Barcode Scanner\", frame)\r\n        # Press 'q' to quit\r\n        if cv2.waitKey(1) & 0xFF == ord('q'):\r\n            break\r\n    cap.release()\r\n    cv2.destroyAllWindows()\r\n    return barcode_data  # Return the decoded barcode data\r\n\r\n\r\n# Call the function to start scanning barcodes and save the result to a variable\r\n# barcode_result = scan_barcodes() # Returns a String\r\nbarcode_result = '01201303'\r\nmain(barcode_result)  # Print the decoded barcode data\r\n\r\n# 075610445107 Sulfur8 Medicated Example
+===================================================================
+diff --git a/barcode b/barcode
+--- a/barcode	
++++ b/barcode	
+@@ -1,7 +1,9 @@
+ import cv2
+ import numpy as np
+ import pyzbar.pyzbar as pyzbar
+-from webscraping import main
++import requests
++from bs4 import BeautifulSoup
++import json
+ 
+ 
+ # Define a function to capture video from your camera and process each frame
+@@ -26,12 +28,34 @@
+             break
+     cap.release()
+     cv2.destroyAllWindows()
+-    return barcode_data  # Return the decoded barcode data
++    return barcode_data  # Return the decoded barcode data`
+ 
+ 
+ # Call the function to start scanning barcodes and save the result to a variable
+-# barcode_result = scan_barcodes() # Returns a String
+-barcode_result = '01201303'
+-main(barcode_result)  # Print the decoded barcode data
++barcode_result = scan_barcodes()
++print(barcode_result)  # Print the decoded barcode data
++
++# Website to use for searching barcode values
++url = "https://api.barcodespider.com/v1/lookup"
++querystring = {"upc": barcode_result}
++
++headers = {
++    'token': "d970f9f75b5fb1d6c3a5",
++    'Host': "api.barcodespider.com",
++    'Accept-Encoding': "gzip, deflate",
++    'Connection': "keep-alive",
++    'cache-control': "no-cache"
++}
++
++response = requests.request("GET", url, headers=headers, params=querystring)
++data = response.json()
++
++prince = response.text
+ 
+-# 075610445107 Sulfur8 Medicated Example
+\ No newline at end of file
++data_dict = json.loads(prince)
++
++# Extract the price from the dictionary
++price = data_dict['Stores'][0]['price']
++name = data_dict['item_attributes']['title']
++
++print(f"The name of item is {name}, The price of {name} is {price}")
