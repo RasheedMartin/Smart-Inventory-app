@@ -166,7 +166,7 @@ def create_user_database():
                     firstname TEXT,
                     lastname TEXT,
                     email TEXT, 
-                    userid UNIQUE REAL)''')
+                    userid TEXT UNIQUE )''')
 
     # Commit the table creation
     conn.commit()

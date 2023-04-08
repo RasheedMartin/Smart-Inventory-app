@@ -52,10 +52,6 @@ class LoginWindow(Screen):
         self.manager.current = 'main'
 
 
-
-
-
-
 class MainWindow(Screen):
     firstname = StringProperty('')
 
@@ -143,7 +139,7 @@ class ProductWindow(Screen):
         if self.barcode_data is not None and self.barcode_data != '':
             self.data_retrieval(self.barcode_data)
         else:
-            self.ids.newitem.text = ''  # clear text
+            self.ids.barcode.text = ''  # clear text
             ErrorPopup().open()  # pop up error
 
     def data_retrieval(self, barcode_data):
