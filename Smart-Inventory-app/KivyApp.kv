@@ -194,6 +194,7 @@ WindowManager:
                 id: username_login
                 multiline: False
                 font_size: '16dp'
+                text: 'Rashmars'
             Label:
                 text: "Password"
                 font_size: '20dp'
@@ -203,6 +204,7 @@ WindowManager:
                 id: password_login
                 multiline: False
                 font_size: '16dp'
+                text: 'Rasheed123'
                 password: True
                 password_mask: '*'
         GridLayout:
@@ -466,18 +468,7 @@ WindowManager:
                 on_release:
                     root.barcode_data = root.manager.get_screen("product").barcode_data
                     root.on_release_button()
-<Row>
 
-    orientation: "horizontal"
-
-    Button:
-        text: "name"
-    Button:
-        text: "type"
-    Button:
-        text: "content"
-    Button:
-        text: "xyz"
 
 <SelectionWindow>:
     name: "selection"
@@ -534,7 +525,7 @@ WindowManager:
                 max_height: 120
                 on_select:
                     drop_content.text = f'{args[1]}'
-                    root.manager.category = 'drop'
+                    root.manager.category = drop_content.text
                     root.manager.current = 'edit'
 
 
@@ -644,103 +635,38 @@ WindowManager:
 
 <EditWindow>
     name: "edit"
-#    canvas.before:
-#        Rectangle:
-#            pos: self.pos
-#            size: self.size
-#            source: 'images/black_background_app.jpg'
-#    RelativeLayout:
-#        size_hint: None, None
-#        size: 120, 50
-#        pos_hint: {'right': 1, 'top': 1}
-#        Button:
-#            text: "Logout"
-#            font_size: '25dp'
-#            font_name: "Roboto-Bold"
-#            size_hint: (1.12, 1.1)
-#            background_color: 'red'
-#            color: 'white'
-#            on_release:
-#                root.manager.transition.direction = 'left'
-#                root.on_logout_button()
-    BoxLayout:
-        orientation : 'horizontal'
-        size_hint: 1.0,0.10
-        canvas.before:
-            Color:
-                rgba: [0.2,0.2,0.2,1.0]
-            Rectangle :
-                pos: self.pos
-                size: self.size
-
-        Label:
-            text: "sl/no"
-            size_hint: 0.2,1.0
-
-        Label:
-            text: "Type"
-            size_hint: 0.4,1.0
-
-        Label:
-            text: "Content"
-            size_hint: 1.0,1.0
-
-        Label:
-            text: "Duration"
-            size_hint: 0.4,1.0
-
-    BoxLayout:
-        orientation : 'vertical'
-        size_hint: 1.0,1.0
-        CustomScrollView:
-        Label:
-            size_hint: 1.0, 0.10
-            text: ""
-            canvas.before:
-                Color:
-                    rgba: [0.3,0.3,0.3,1.0]
-                Rectangle :
-                    pos: self.pos
-                    size: self.size
-
-<SelectableLabel>:
-    # Draw a background to indicate selection
     canvas.before:
-        Color:
-            rgba: (.0, 0.9, .1, .3) if self.selected else (0, 0, 0, 1)
         Rectangle:
             pos: self.pos
             size: self.size
-    RecycleViewRow:
-
-
-<RecycleViewRow>:
-    orientation: 'horizontal'
-    size_hint: 1.0, 1.0
-
-    Label:
-        text: root.upc
-        size_hint_x : 0.2
-
-    Label:
-        text: root.name
-        size_hint_x : 0.4
-
-    Label:
-        text: root.price
-        size_hint_x : 1.0
-
-
-<CustomScrollView>
-    viewclass: 'RecycleViewRow'
-    SelectableRecycleBoxLayout:
-        default_size: None, dp(40)
-        default_size_hint: 1, None
+            source: 'images/black_background_app.jpg'
+    RelativeLayout:
+        size_hint: None, None
+        size: 120, 50
+        pos_hint: {'right': 1, 'top': 1}
+        padding: [0, 50]
+        Button:
+            text: "Logout"
+            font_size: '25dp'
+            font_name: "Roboto-Bold"
+            size_hint: (1.12, 1.1)
+            background_color: 'red'
+            color: 'white'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.on_logout_button()
+    GridLayout:
+        size_hint: 1, None
         size_hint_y: None
-        height: self.minimum_height
-        orientation: 'vertical'
-        multiselect: True
-        touch_multiselect: True
+        height: 25
+        cols: 3
+        Label:
+            text: "UPC"
+        Label:
+            text: "Name"
+        Label:
+            text: "Price"
+
 
 <ErrorPopup>:
     size_hint: .5 , .5

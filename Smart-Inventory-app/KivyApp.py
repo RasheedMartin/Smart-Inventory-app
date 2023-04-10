@@ -1,7 +1,9 @@
 from kivy.uix.behaviors import FocusBehavior
 from kivy.uix.dropdown import DropDown
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
 from kivy.uix.recycleboxlayout import RecycleBoxLayout
+from kivy.uix.recyclegridlayout import RecycleGridLayout
 from kivy.uix.recycleview.layout import LayoutSelectionBehavior
 from kivy.uix.recycleview.views import RecycleDataViewBehavior
 from kivy.uix.scrollview import ScrollView
@@ -232,11 +234,6 @@ class ProductWindow(Screen):
 
 class EditWindow(Screen):
 
-    def on_enter(self):
-        # First access the desired screen
-        edit = self.manager.get_screen('edit')
-        edit.add_widget(CustomScrollView())
-
     def on_logout_button(self):
         self.manager.userid = ''
         self.manager.category = ''
@@ -272,75 +269,8 @@ class PasswordErrorPopup(Popup):
     pass
 
 
-class Row(BoxLayout):
-    pass
-
-
-class RecycleViewRow(BoxLayout):
-    upc = StringProperty('')
-    name = StringProperty('')
-    price = StringProperty('')
-
-
-class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
-                                 RecycleBoxLayout):
-    ''' Adds selection and focus behaviour to the view. '''
-
-
-class SelectableLabel(RecycleDataViewBehavior, Label):
-    ''' Add selection support to the Label '''
-    index = None
-    selected = BooleanProperty(False)
-    selectable = BooleanProperty(True)
-
-    upc = StringProperty('')
-    name = StringProperty('')
-    price = StringProperty('')
-
-    def refresh_view_attrs(self, rv, index, data):
-        ''' Catch and handle the view changes '''
-        self.index = index
-        return super(SelectableLabel, self).refresh_view_attrs(
-            rv, index, data)
-
-    def on_touch_down(self, touch):
-        ''' Add selection on touch down '''
-        if super(SelectableLabel, self).on_touch_down(touch):
-            return True
-        if self.collide_point(*touch.pos) and self.selectable:
-            return self.parent.select_with_touch(self.index, touch)
-
-    def apply_selection(self, rv, index, is_selected):
-        ''' Respond to the selection of items in the view. '''
-        self.selected = is_selected
-        if is_selected:
-            print("selection changed to {0}".format(rv.data[index]))
-        else:
-            print("selection removed for {0}".format(rv.data[index]))
-
-
 class CustomDropDown(DropDown):
     pass
-
-
-class CustomScrollView(RecycleView):
-    def __init__(self, **kwargs):
-        super(CustomScrollView, self).__init__(**kwargs)
-        Clock.schedule_once(self.after_init)
-
-    def after_init(self, dt):
-        self.populate()
-
-    def populate(self):
-        # fetch data from the database
-        app = App.get_running_app()
-
-        ads = get_products(app.root.userid)  # function reads everything from db
-        rows = len(ads)
-        self.data = [{'UPC': str(ads[x][0]), 'Name': str(ads[x][1]), 'Price': str(ads[x][2])} for x in
-                     range(rows)]
-        # self.data = [{'text': str(x)} for x in range(100)]
-        print(self.data)
 
 
 class WindowManager(ScreenManager):
@@ -363,6 +293,8 @@ kv = Builder.load_file('KivyApp.kv')
 
 
 class MainApp(App):
+    title = "Smart Inventory Management App"
+
     def build(self):
         return kv
 

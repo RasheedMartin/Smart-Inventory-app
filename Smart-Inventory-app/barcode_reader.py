@@ -132,7 +132,7 @@ def update_database(name, barcode, price, category, userid):
     cursor = conn.cursor()
 
     cursor.execute('''INSERT INTO 'products' (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)''',
-                   (barcode, name, price, category, userid))
+                   (barcode, name, price, category.strip(), userid))
     # Commit the changes
     conn.commit()
 
@@ -141,10 +141,10 @@ def update_database(name, barcode, price, category, userid):
 
 
 # update_database(sql_name,name, barcode_result, price)
-def get_products(userid):
+def get_products(userid, category):
     conn = sqlite3.connect("barcode_data.db")
     c = conn.cursor()
-    c.execute('''SELECT UPC, Name, Price FROM products WHERE UserID=?''', (userid,))
+    c.execute('''SELECT UPC, Name, Price FROM products WHERE UserID=? AND Category=?''', (userid, category))
     results = c.fetchall()
     return results
 
@@ -172,6 +172,7 @@ def get_unique_categories():
     result = cursor.fetchall()
     conn.close()
     categories = [r[0] for r in result]
+    print(categories)
     return categories
 
 
@@ -255,7 +256,7 @@ def login(username, password):
 
 
 if __name__ == "__main__":
-    # get_unique_categories()
     create_user_database()
     create_database()
     login('Rashmars', 'Rasheed321!')
+    get_unique_categories()
