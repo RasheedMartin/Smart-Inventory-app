@@ -1,7 +1,8 @@
 from kivy.uix.popup import Popup
 
 from barcode_reader import scan_barcodes, \
-    get_price, create_database, update_database, get_unique_categories, checking, create_user_database
+    get_price, create_database, update_database, get_unique_categories, \
+    checking, create_user_database, add_user, login, get_name
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -30,7 +31,7 @@ class SignUpWindow(Screen):
         firstname = self.ids.firstname.text
         lastname = self.ids.lastname.text
         email = self.ids.email.text
-        username = self.ids.email.text
+        username = self.ids.username.text
         password = self.ids.password_text.text
 
         for x in [firstname, lastname, email, username, password]:
@@ -38,29 +39,40 @@ class SignUpWindow(Screen):
                 SignUpErrorPopup().open()
                 break
         else:
+            self.manager.userid = add_user(username, password, firstname, lastname, email)
             self.ids.firstname.text = ''
             self.ids.lastname.text = ''
             self.ids.email.text = ''
-            self.ids.email.text = ''
+            self.ids.username.text = ''
             self.ids.password_text.text = ''
             SignUpSuccessPopup().open()
-            # self.manager.userid = [insert function]
             self.manager.current = 'login'
 
 
 class LoginWindow(Screen):
     def on_release_button(self):
-        self.manager.current = 'main'
-        """username, password = samplemethod(self.ids.username_login.text, self.ids.password_login.text)
-            if not username:  
-                UsernameErrorPopup().open()
-            elif not password:
-                PasswordErrorPopup().open()
-            else:
-                self.manager.current = 'main'
-            
-        
-        """
+        username, password, result = login(self.ids.username_login.text,
+                                           self.ids.password_login.text)
+        if not username:
+            self.ids.username_login.text = ''
+            self.ids.password_login.text = ''
+            UsernameErrorPopup().ids.username.text = 'You have left the fields blank'
+            UsernameErrorPopup().open()
+
+        elif not password:
+            self.ids.username_login.text = ''
+            self.ids.password_login.text = ''
+            PasswordErrorPopup().open()
+        else:
+            self.ids.username_login.text = ''
+            self.ids.password_login.text = ''
+            self.manager.userid = str(result)
+            firstname, lastname = get_name(self.manager.userid)
+            self.manager.get_screen('main').ids.welcome.text = f'Welcome Back ' \
+                                                               f'{firstname} ' \
+                                                               f'{lastname}! '
+            self.manager.current = 'main'
+            self.manager.get_popup()
 
 
 class MainWindow(Screen):
@@ -118,7 +130,9 @@ class ManualWindow(Screen):
         name = self.ids.newName.text
         price = self.ids.newPrice.text
         if self.barcode_data is not None:
-            update_database(name, self.barcode_data, price, self.manager.category, self.manager.userid)
+            update_database(name, self.barcode_data, price,
+                            self.manager.category,
+                            self.manager.userid)
             SuccessPopup().open()
 
     def on_logout_button(self):
@@ -169,7 +183,9 @@ class ProductWindow(Screen):
             # It is successful and update the database
             else:
                 # Display a successful popup window
-                update_database(name, barcode_data, price, self.manager.category, self.manager.userid)
+                update_database(name, barcode_data, price,
+                                self.manager.category,
+                                self.manager.userid)
                 SuccessPopup().open()
 
     def on_logout_button(self):
@@ -202,6 +218,14 @@ class SignUpSuccessPopup(Popup):
     pass
 
 
+class UsernameErrorPopup(Popup):
+    pass
+
+
+class PasswordErrorPopup(Popup):
+    pass
+
+
 class Row(BoxLayout):
     pass
 
@@ -211,7 +235,8 @@ class WindowManager(ScreenManager):
     category = StringProperty('')
 
     def pass_info(self, barcode_data, category):
-        self.add_widget(ManualWindow(barcode_data=barcode_data, category=category))
+        self.add_widget(ManualWindow(barcode_data=barcode_data,
+                                     category=category))
 
     def pass_categ(self, category):
         self.add_widget(ProductWindow(category=category))

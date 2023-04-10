@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import sqlite3
+from random import random
 
 
 # Define a function to capture video from your camera and process each frame
@@ -75,6 +76,22 @@ def get_price(barcode_result):
 
 # price, name = get_price(barcode_result)
 
+def get_name(userid):
+    # create a connection to the database
+    conn = sqlite3.connect('barcode_data.db')
+
+    c = conn.cursor()
+    c.execute('''SELECT firstname, lastname FROM users WHERE userid=?''', (userid,))
+    result = c.fetchall()[0]
+
+    # Commit the table creation
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+
+    return result[0], result[1]
+
 
 def create_database():
     # Prompt the user for a database name
@@ -88,11 +105,13 @@ def create_database():
 
     # Create a table with three columns
     cursor.execute('''CREATE TABLE IF NOT EXISTS 'products'
-                      (UPC TEXT PRIMARY KEY,
+                      (UPC TEXT,
                        Name TEXT,
                        Price REAL,
                        Category TEXT, 
-                       UserID TEXT)''')
+                       UserID TEXT, 
+                       PRIMARY KEY (UPC), 
+                       FOREIGN KEY (UserID) REFERENCES users(userid))''')
 
     # Commit the table creation
     conn.commit()
@@ -114,7 +133,7 @@ def update_database(name, barcode, price, category, userid):
     cursor = conn.cursor()
 
     # Insert data into the table
-    cursor.execute("INSERT INTO products (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)",
+    cursor.execute('''INSERT INTO 'products' (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)''',
                    (barcode, name, price, category, userid))
 
     # Commit the changes
@@ -151,7 +170,7 @@ def get_unique_categories():
 
 def create_user_database():
     # Prompt the user for a database name
-    dbname = 'user_data'
+    dbname = 'barcode_data'
 
     # Create a connection to the database
     conn = sqlite3.connect(dbname + ".db")
@@ -180,20 +199,56 @@ def create_user_database():
 
 def add_user(username, password, first_name, last_name, email):
     # create a connection to the database
-    conn = sqlite3.connect('user_data.db')
-
+    conn = sqlite3.connect('barcode_data.db')
+    result = True
     # create a cursor object
     c = conn.cursor()
-    userid = '1'
+    while result:
+        userid = str(random())
+        c.execute('''SELECT userid FROM users WHERE userid=?''', (userid,))
+        result = c.fetchone()
+
     # insert the new user into the users table
-    c.execute("INSERT INTO users (username, password, first_name, last_name, email, userid) VALUES (?, ?,?,?,?)",
+    c.execute('''INSERT INTO users (username, password, firstname, lastname, email, userid) VALUES (?, ?,?,?,?, ?)''',
               (username, password, first_name, last_name, email, userid))
 
     # commit changes to the database and close the connection
     conn.commit()
     conn.close()
+    return userid
+
+
+def login(username, password):
+    # create a connection to the database
+    conn = sqlite3.connect('barcode_data.db')
+
+    c = conn.cursor()
+    c.execute('''SELECT username, password FROM users WHERE username=?''', (username,))
+    result = c.fetchall()
+    if result:
+        username_result = (result[0][0] == username)
+        password_result = (result[0][1] == password)
+        c.execute('''SELECT userid FROM users WHERE username=?''', (username,))
+        result = c.fetchall()[0][0]
+
+        # Commit the table creation
+        conn.commit()
+
+        # Close the connection
+        conn.close()
+
+        return username_result, password_result, result
+
+    # Commit the table creation
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+    return False, False, 0
 
 
 if __name__ == "__main__":
     # get_unique_categories()
+    create_user_database()
     create_database()
+    login('Rashmars', 'Rasheed321!')

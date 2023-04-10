@@ -256,6 +256,7 @@ WindowManager:
             on_release:
                 root.manager.transition.direction = 'left'
                 root.on_logout_button()
+
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -263,7 +264,7 @@ WindowManager:
 
 
 		Label:
-			text: "Smart Inventory\n\nManagement App"
+			id: welcome
 			font_size: '25dp'
 			color: 'white'
 			font_name: "Roboto-Bold"
@@ -722,6 +723,32 @@ WindowManager:
         orientation: 'vertical'
         Label:
             text: "This UPC already exists"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
+
+<UsernameErrorPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Username does not exists"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: username
+            on_open:
+                text: "This Username already exists %s" % root
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
+
+<PasswordErrorPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Password was wrong"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "This Password is incorrect"
         Button:
             text: "Close"
             on_press: root.dismiss()
