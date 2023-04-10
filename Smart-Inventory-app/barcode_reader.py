@@ -109,8 +109,7 @@ def create_database():
                        Name TEXT,
                        Price REAL,
                        Category TEXT, 
-                       UserID TEXT, 
-                       PRIMARY KEY (UPC), 
+                       UserID TEXT,  
                        FOREIGN KEY (UserID) REFERENCES users(userid))''')
 
     # Commit the table creation
@@ -132,10 +131,8 @@ def update_database(name, barcode, price, category, userid):
 
     cursor = conn.cursor()
 
-    # Insert data into the table
     cursor.execute('''INSERT INTO 'products' (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)''',
                    (barcode, name, price, category, userid))
-
     # Commit the changes
     conn.commit()
 
@@ -144,13 +141,23 @@ def update_database(name, barcode, price, category, userid):
 
 
 # update_database(sql_name,name, barcode_result, price)
+def get_products(userid):
+    conn = sqlite3.connect("barcode_data.db")
+    c = conn.cursor()
+    c.execute('''SELECT UPC, Name, Price FROM products WHERE UserID=?''', (userid,))
+    results = c.fetchall()
+    return results
 
-def checking(upc_code):
+
+def checking(barcode, userid, category):
     conn = sqlite3.connect("barcode_data.db")
 
     cursor = conn.cursor()
-    cursor.execute("SELECT name FROM products WHERE UPC=?", (upc_code,))
+    # Check if specific barcode exists in similar category for specific user
+    cursor.execute('''SELECT UPC, Category FROM products WHERE (USERID=? AND UPC=? AND Category=?)''',
+                   (userid, barcode, category))
     result = cursor.fetchone()
+    # Insert data into the table
     conn.close()
     if result:
         return True
@@ -161,7 +168,7 @@ def checking(upc_code):
 def get_unique_categories():
     conn = sqlite3.connect('barcode_data.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT DISTINCT category FROM products")
+    cursor.execute("SELECT DISTINCT Category FROM products")
     result = cursor.fetchall()
     conn.close()
     categories = [r[0] for r in result]

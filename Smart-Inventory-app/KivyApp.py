@@ -1,13 +1,21 @@
+from kivy.uix.behaviors import FocusBehavior
+from kivy.uix.dropdown import DropDown
 from kivy.uix.popup import Popup
-
+from kivy.uix.recycleboxlayout import RecycleBoxLayout
+from kivy.uix.recycleview.layout import LayoutSelectionBehavior
+from kivy.uix.recycleview.views import RecycleDataViewBehavior
+from kivy.uix.scrollview import ScrollView
+from kivy.uix.recycleview import RecycleView
+from kivy.uix.label import Label
+from kivy.clock import Clock
 from barcode_reader import scan_barcodes, \
     get_price, create_database, update_database, get_unique_categories, \
-    checking, create_user_database, add_user, login, get_name
+    checking, create_user_database, add_user, login, get_name, get_products
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, BooleanProperty
 from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
@@ -72,7 +80,6 @@ class LoginWindow(Screen):
                                                                f'{firstname} ' \
                                                                f'{lastname}! '
             self.manager.current = 'main'
-            self.manager.get_popup()
 
 
 class MainWindow(Screen):
@@ -107,6 +114,8 @@ class MainWindow(Screen):
             pass
 
     def on_logout_button(self):
+        self.manager.userid = ''
+        self.manager.category = ''
         self.manager.current = 'home'
 
 
@@ -115,9 +124,12 @@ class CreationWindow(Screen):
 
     def on_release_button(self):
         self.manager.category = self.ids.category.text
+        self.ids.category.text = ''
         self.manager.current = 'product'
 
     def on_logout_button(self):
+        self.manager.userid = ''
+        self.manager.category = ''
         self.manager.current = 'home'
 
 
@@ -136,11 +148,35 @@ class ManualWindow(Screen):
             SuccessPopup().open()
 
     def on_logout_button(self):
+        self.manager.userid = ''
+        self.manager.category = ''
         self.manager.current = 'home'
 
 
 class SelectionWindow(Screen):
+    def on_enter(self):
+        # First access the desired screen
+        selection = self.manager.get_screen('selection')
+        selection.add_widget(CustomDropDown())
+        # Then access the target drop-down by id.
+        drop_down = selection.ids.drop_content
+        drop_down.clear_widgets()
+        # Now iterate over...
+        categories = get_unique_categories()
+        for name in enumerate(categories):
+            btn = Button(
+                text=name[1],
+                size_hint_y=None,
+                height=35,
+                background_color='white',
+                color='black'
+            )
+            btn.bind(on_release=lambda btn_obj: drop_down.select(btn_obj.text))
+            drop_down.add_widget(btn)
+
     def on_logout_button(self):
+        self.manager.userid = ''
+        self.manager.category = ''
         self.manager.current = 'home'
 
 
@@ -168,7 +204,7 @@ class ProductWindow(Screen):
 
     def data_retrieval(self, barcode_data):
         # Check the SQL data first
-        exists = checking(barcode_data)
+        exists = checking(barcode_data, self.manager.userid, self.manager.category)
         # If it exists, show it popup window that it already exists
         if exists:
             ExistsPopup().open()
@@ -189,11 +225,21 @@ class ProductWindow(Screen):
                 SuccessPopup().open()
 
     def on_logout_button(self):
+        self.manager.userid = ''
+        self.manager.category = ''
         self.manager.current = 'home'
 
 
 class EditWindow(Screen):
+
+    def on_enter(self):
+        # First access the desired screen
+        edit = self.manager.get_screen('edit')
+        edit.add_widget(CustomScrollView())
+
     def on_logout_button(self):
+        self.manager.userid = ''
+        self.manager.category = ''
         self.manager.current = 'home'
 
 
@@ -230,6 +276,73 @@ class Row(BoxLayout):
     pass
 
 
+class RecycleViewRow(BoxLayout):
+    upc = StringProperty('')
+    name = StringProperty('')
+    price = StringProperty('')
+
+
+class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
+                                 RecycleBoxLayout):
+    ''' Adds selection and focus behaviour to the view. '''
+
+
+class SelectableLabel(RecycleDataViewBehavior, Label):
+    ''' Add selection support to the Label '''
+    index = None
+    selected = BooleanProperty(False)
+    selectable = BooleanProperty(True)
+
+    upc = StringProperty('')
+    name = StringProperty('')
+    price = StringProperty('')
+
+    def refresh_view_attrs(self, rv, index, data):
+        ''' Catch and handle the view changes '''
+        self.index = index
+        return super(SelectableLabel, self).refresh_view_attrs(
+            rv, index, data)
+
+    def on_touch_down(self, touch):
+        ''' Add selection on touch down '''
+        if super(SelectableLabel, self).on_touch_down(touch):
+            return True
+        if self.collide_point(*touch.pos) and self.selectable:
+            return self.parent.select_with_touch(self.index, touch)
+
+    def apply_selection(self, rv, index, is_selected):
+        ''' Respond to the selection of items in the view. '''
+        self.selected = is_selected
+        if is_selected:
+            print("selection changed to {0}".format(rv.data[index]))
+        else:
+            print("selection removed for {0}".format(rv.data[index]))
+
+
+class CustomDropDown(DropDown):
+    pass
+
+
+class CustomScrollView(RecycleView):
+    def __init__(self, **kwargs):
+        super(CustomScrollView, self).__init__(**kwargs)
+        Clock.schedule_once(self.after_init)
+
+    def after_init(self, dt):
+        self.populate()
+
+    def populate(self):
+        # fetch data from the database
+        app = App.get_running_app()
+
+        ads = get_products(app.root.userid)  # function reads everything from db
+        rows = len(ads)
+        self.data = [{'UPC': str(ads[x][0]), 'Name': str(ads[x][1]), 'Price': str(ads[x][2])} for x in
+                     range(rows)]
+        # self.data = [{'text': str(x)} for x in range(100)]
+        print(self.data)
+
+
 class WindowManager(ScreenManager):
     userid = StringProperty('')
     category = StringProperty('')
@@ -252,24 +365,6 @@ kv = Builder.load_file('KivyApp.kv')
 class MainApp(App):
     def build(self):
         return kv
-
-    def on_start(self):
-        # First access the desired screen
-        selection = self.root.get_screen('selection')
-        # Then access the target drop-down by id.
-        drop_down = selection.ids.drop_content
-        # Now iterate over...
-        categories = get_unique_categories()
-        for name in enumerate(categories):
-            btn = Button(
-                text=name[1],
-                size_hint_y=None,
-                height=35,
-                background_color='yellow',
-                color='black'
-            )
-            btn.bind(on_release=lambda btn_obj: drop_down.select(btn_obj.text))
-            drop_down.add_widget(btn)
 
 
 if __name__ == '__main__':
