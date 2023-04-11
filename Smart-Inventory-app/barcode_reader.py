@@ -165,14 +165,13 @@ def checking(barcode, userid, category):
         return False
 
 
-def get_unique_categories():
+def get_unique_categories(userid):
     conn = sqlite3.connect('barcode_data.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT DISTINCT Category FROM products")
+    cursor.execute("SELECT DISTINCT Category FROM products WHERE UserID=?", (userid,))
     result = cursor.fetchall()
     conn.close()
     categories = [r[0] for r in result]
-    print(categories)
     return categories
 
 

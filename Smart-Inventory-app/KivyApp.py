@@ -174,7 +174,7 @@ class ProductWindow(Screen):
         if self.barcode_data is not None and self.barcode_data != '':
             self.data_retrieval(self.barcode_data)
         else:
-            self.ids.newitem.text = ''  # clear text
+            self.ids.barcode.text = ''  # clear text
             ErrorPopup().open()  # pop up error
 
     def data_retrieval(self, barcode_data):
@@ -213,9 +213,9 @@ class SelectionWindow(Screen):
         # Then access the target drop-down by id.
         drop_down = selection.ids.drop_content
         __safe_id: [drop_down.__self]
-        # drop_down.clear_widgets()
+        drop_down.clear_widgets()
         # Now iterate over...
-        categories = get_unique_categories()
+        categories = get_unique_categories(self.manager.userid)
         for name in enumerate(categories):
             btn = Button(
                 text=name[1],
