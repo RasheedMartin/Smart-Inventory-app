@@ -472,6 +472,8 @@ WindowManager:
 
 <SelectionWindow>:
     name: "selection"
+
+    __safe_id: [drop_content.__self__]
     canvas.before:
         Rectangle:
             pos: self.pos
@@ -514,6 +516,7 @@ WindowManager:
                 height: 44
                 on_parent: drop_content.dismiss()
                 on_release: drop_content.open(self)
+
             CustomDropDown:
                 id: drop_content
                 # on_parent: self.dismiss()
@@ -635,37 +638,98 @@ WindowManager:
 
 <EditWindow>
     name: "edit"
+    __safe_id: [new_rv.__self__]
     canvas.before:
         Rectangle:
             pos: self.pos
             size: self.size
             source: 'images/black_background_app.jpg'
-    RelativeLayout:
-        size_hint: None, None
-        size: 120, 50
-        pos_hint: {'right': 1, 'top': 1}
-        padding: [0, 50]
-        Button:
-            text: "Logout"
-            font_size: '25dp'
-            font_name: "Roboto-Bold"
-            size_hint: (1.12, 1.1)
-            background_color: 'red'
-            color: 'white'
-            on_release:
-                root.manager.transition.direction = 'left'
-                root.on_logout_button()
     GridLayout:
-        size_hint: 1, None
+        rows: 4
+        cols: 1
+        RelativeLayout:
+            size_hint: None, None
+            size: 120, 50
+            pos_hint: {'right': 1, 'top': 1}
+            padding: [0, 50]
+            Button:
+                text: "Logout"
+                font_size: '25dp'
+                font_name: "Roboto-Bold"
+                size_hint: (1.12, 1.1)
+                background_color: 'red'
+                color: 'white'
+                on_release:
+                    root.manager.transition.direction = 'left'
+                    root.on_logout_button()
+        GridLayout:
+            cols: 1
+            rows: 1
+            size_hint_y: .1
+            Label:
+                text: root.manager.category
+                font_size: 36
+                font_name: 'Roboto-Bold'
+        GridLayout:
+            id: rv
+            cols: 1
+            rows: 1
+
+#            size_hint: 1, None
+            size_hint_y: .7
+            RV:
+                id: new_rv
+        GridLayout:
+            cols: 4
+            rows: 1
+            size_hint_y: .2
+            Button:
+                text: 'Back'
+                background_color: 'red'
+                id: back
+                on_release: root.manager.current = "main"
+            Button:
+                text: 'Delete'
+            Button:
+                text: 'Add'
+            Button:
+                text: 'Edit'
+                id: edit
+
+
+
+<SelectableLabel>:
+    id: label_id
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.0, 0.9, .1, .3) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    font_size: 12
+
+<RV>:
+    viewclass: 'SelectableLabel'
+    __safe_id: [child_rv.__self__]
+    bar_width: 16
+    do_scroll_x: True
+    do_scroll_y: True
+    SelectableRecycleBoxLayout:
+        id: child_rv
+        default_size: dp(1000), dp(56)
+        default_size_hint: None, None
         size_hint_y: None
-        height: 25
-        cols: 3
-        Label:
-            text: "UPC"
-        Label:
-            text: "Name"
-        Label:
-            text: "Price"
+        size_hint_x: None
+        pos_hint_y: None
+        pos_hint_x: None
+        height: self.minimum_height
+        width: self.minimum_width
+        orientation: 'vertical'
+        multiselect: False
+        touch_multiselect: False
+
+
 
 
 <ErrorPopup>:

@@ -17,7 +17,7 @@ from barcode_reader import scan_barcodes, \
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-from kivy.properties import StringProperty, BooleanProperty
+from kivy.properties import StringProperty, BooleanProperty, ObjectProperty, ListProperty, NumericProperty
 from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
@@ -155,33 +155,6 @@ class ManualWindow(Screen):
         self.manager.current = 'home'
 
 
-class SelectionWindow(Screen):
-    def on_enter(self):
-        # First access the desired screen
-        selection = self.manager.get_screen('selection')
-        selection.add_widget(CustomDropDown())
-        # Then access the target drop-down by id.
-        drop_down = selection.ids.drop_content
-        drop_down.clear_widgets()
-        # Now iterate over...
-        categories = get_unique_categories()
-        for name in enumerate(categories):
-            btn = Button(
-                text=name[1],
-                size_hint_y=None,
-                height=35,
-                background_color='white',
-                color='black'
-            )
-            btn.bind(on_release=lambda btn_obj: drop_down.select(btn_obj.text))
-            drop_down.add_widget(btn)
-
-    def on_logout_button(self):
-        self.manager.userid = ''
-        self.manager.category = ''
-        self.manager.current = 'home'
-
-
 class ProductWindow(Screen):
     # category = StringProperty('Test')
     barcode_data = StringProperty('')
@@ -232,12 +205,158 @@ class ProductWindow(Screen):
         self.manager.current = 'home'
 
 
-class EditWindow(Screen):
+class SelectionWindow(Screen):
+    def on_enter(self):
+        # First access the desired screen
+        selection = self.manager.get_screen('selection')
+        selection.add_widget(CustomDropDown())
+        # Then access the target drop-down by id.
+        drop_down = selection.ids.drop_content
+        __safe_id: [drop_down.__self]
+        # drop_down.clear_widgets()
+        # Now iterate over...
+        categories = get_unique_categories()
+        for name in enumerate(categories):
+            btn = Button(
+                text=name[1],
+                size_hint_y=None,
+                height=35,
+                background_color='white',
+                color='black'
+            )
+            btn.bind(on_release=lambda btn_obj: drop_down.select(btn_obj.text))
+            drop_down.add_widget(btn)
 
     def on_logout_button(self):
         self.manager.userid = ''
         self.manager.category = ''
         self.manager.current = 'home'
+
+
+class EditWindow(Screen):
+    def on_enter(self):
+        # First access the desired screen
+        selection = self.manager.get_screen('edit')
+        # Then access the target drop-down by id.
+        drop_down = selection.ids.rv
+        drop_down.clear_widgets()
+        drop_down.add_widget(RV())
+
+    def on_logout_button(self):
+        self.manager.userid = ''
+        self.manager.category = ''
+        self.manager.current = 'home'
+
+
+
+
+class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
+                                 RecycleBoxLayout):
+    ''' Adds selection and focus behaviour to the view. '''
+    selected_row = NumericProperty(0)
+
+    def get_nodes(self):
+        nodes = self.get_selectable_nodes()
+        if self.nodes_order_reversed:
+            nodes = nodes[::-1]
+        if not nodes:
+            return None, None
+
+        selected = self.selected_nodes
+        if not selected:  # nothing selected, select the first
+            self.select_node(nodes[0])
+            self.selected_row = 0
+            return None, None
+
+        if len(nodes) == 1:  # the only selectable node is selected already
+            return None, None
+
+        last = nodes.index(selected[-1])
+        self.clear_selection()
+        return last, nodes
+
+    def select_next(self):
+        ''' Select next row '''
+        last, nodes = self.get_nodes()
+        if not nodes:
+            return
+
+        if last == len(nodes) - 1:
+            self.select_node(nodes[0])
+            self.selected_row = nodes[0]
+        else:
+            self.select_node(nodes[last + 1])
+            self.selected_row = nodes[last + 1]
+
+    def select_previous(self):
+        ''' Select previous row '''
+        last, nodes = self.get_nodes()
+        if not nodes:
+            return
+
+        if not last:
+            self.select_node(nodes[-1])
+            self.selected_row = nodes[-1]
+        else:
+            self.select_node(nodes[last - 1])
+            self.selected_row = nodes[last - 1]
+
+    def select_current(self):
+        ''' Select current row '''
+        last, nodes = self.get_nodes()
+        if not nodes:
+            return
+
+        self.select_node(nodes[self.selected_row])
+
+
+class SelectableLabel(RecycleDataViewBehavior, Label):
+    ''' Add selection support to the Label '''
+    index = None
+    selected = BooleanProperty(False)
+    selectable = BooleanProperty(True)
+    rv_data = ObjectProperty(None)
+
+    def refresh_view_attrs(self, rv, index, data):
+        ''' Catch and handle the view changes '''
+        self.index = index
+        return super(SelectableLabel, self).refresh_view_attrs(
+            rv, index, data)
+
+    def on_touch_down(self, touch):
+        ''' Add selection on touch down '''
+        if super(SelectableLabel, self).on_touch_down(touch):
+            return True
+        if self.collide_point(*touch.pos) and self.selectable:
+            return self.parent.select_with_touch(self.index, touch)
+
+    def apply_selection(self, rv, index, is_selected):
+        ''' Respond to the selection of items in the view. '''
+        self.selected = is_selected
+        self.rv_data = rv.data
+        if is_selected:
+            print("selection changed to {0}".format(rv.data[index]))
+        else:
+            print("selection removed for {0}".format(rv.data[index]))
+
+
+class RV(RecycleView):
+    data_items = ListProperty([])
+
+    def __init__(self, **kwargs):
+        super(RV, self).__init__(**kwargs)
+        Clock.schedule_once(self.after_init)
+
+    def after_init(self, dt):
+        root = App.get_running_app().root
+        userid = root.userid
+        category = root.category
+        ads = get_products(userid, category)
+        self.data = [{'text': str(ads[x][1]), 'selected': False} for x in range(len(ads))]
+
+
+class CustomDropDown(DropDown):
+    pass
 
 
 ######################## Popup Section  #####################################
@@ -266,10 +385,6 @@ class UsernameErrorPopup(Popup):
 
 
 class PasswordErrorPopup(Popup):
-    pass
-
-
-class CustomDropDown(DropDown):
     pass
 
 

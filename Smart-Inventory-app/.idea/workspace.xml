@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Backend changes added user authenication and other stuff">
+    <list default="true" id="872cbe2c-e426-4936-bf83-7b194371e1da" name="Changes" comment="Stable Version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KivyApp.kv" beforeDir="false" afterPath="$PROJECT_DIR$/KivyApp.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KivyApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/KivyApp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/barcode_data.db" beforeDir="false" afterPath="$PROJECT_DIR$/barcode_data.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/barcode_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/barcode_reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +212,7 @@
       <workItem from="1680413382400" duration="12393000" />
       <workItem from="1680565623605" duration="6426000" />
       <workItem from="1680573198339" duration="142000" />
-      <workItem from="1680573564833" duration="48033000" />
+      <workItem from="1680573564833" duration="63240000" />
     </task>
     <task id="LOCAL-00002" summary="Finally connected">
       <created>1678045686183</created>
@@ -299,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681116897120</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Stable Version">
+      <created>1681158700093</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681158700093</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,12 +373,13 @@
     <MESSAGE value="Graphical Changes to UI" />
     <MESSAGE value="Backend changes" />
     <MESSAGE value="Backend changes added user authenication and other stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Backend changes added user authenication and other stuff" />
+    <MESSAGE value="Stable Version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stable Version" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1676737756872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode.coverage" NAME="barcode Coverage Results" MODIFIED="1678041062201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Smart_Inventory_app$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1681158592985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Smart_Inventory_app$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1681173761081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$webscraping.coverage" NAME="webscraping Coverage Results" MODIFIED="1676841968195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/barcode_data_db$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1680573004013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode_reader.coverage" NAME="barcode_reader Coverage Results" MODIFIED="1681154257659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
