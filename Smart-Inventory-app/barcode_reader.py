@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import sqlite3
+from random import random
 
 
 # Define a function to capture video from your camera and process each frame
@@ -75,6 +76,22 @@ def get_price(barcode_result):
 
 # price, name = get_price(barcode_result)
 
+def get_name(userid):
+    # create a connection to the database
+    conn = sqlite3.connect('barcode_data.db')
+
+    c = conn.cursor()
+    c.execute('''SELECT firstname, lastname FROM users WHERE userid=?''', (userid,))
+    result = c.fetchall()[0]
+
+    # Commit the table creation
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+
+    return result[0], result[1]
+
 
 def create_database():
     # Prompt the user for a database name
@@ -88,11 +105,12 @@ def create_database():
 
     # Create a table with three columns
     cursor.execute('''CREATE TABLE IF NOT EXISTS 'products'
-                      (UPC TEXT PRIMARY KEY,
+                      (UPC TEXT,
                        Name TEXT,
                        Price REAL,
-                       Category 
-                       UserID TEXT)''')
+                       Category TEXT, 
+                       UserID TEXT,  
+                       FOREIGN KEY (UserID) REFERENCES users(userid))''')
 
     # Commit the table creation
     conn.commit()
@@ -113,10 +131,8 @@ def update_database(name, barcode, price, category, userid):
 
     cursor = conn.cursor()
 
-    # Insert data into the table
-    cursor.execute("INSERT INTO products (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)",
-                   (barcode, name, price, category))
-
+    cursor.execute('''INSERT INTO 'products' (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)''',
+                   (barcode, name, price, category.strip(), userid))
     # Commit the changes
     conn.commit()
 
@@ -125,13 +141,23 @@ def update_database(name, barcode, price, category, userid):
 
 
 # update_database(sql_name,name, barcode_result, price)
+def get_products(userid, category):
+    conn = sqlite3.connect("barcode_data.db")
+    c = conn.cursor()
+    c.execute('''SELECT UPC, Name, Price FROM products WHERE UserID=? AND Category=?''', (userid, category))
+    results = c.fetchall()
+    return results
 
-def checking(upc_code):
+
+def checking(barcode, userid, category):
     conn = sqlite3.connect("barcode_data.db")
 
     cursor = conn.cursor()
-    cursor.execute("SELECT name FROM products WHERE UPC=?", (upc_code,))
+    # Check if specific barcode exists in similar category for specific user
+    cursor.execute('''SELECT UPC, Category FROM products WHERE (USERID=? AND UPC=? AND Category=?)''',
+                   (userid, barcode, category))
     result = cursor.fetchone()
+    # Insert data into the table
     conn.close()
     if result:
         return True
@@ -139,10 +165,10 @@ def checking(upc_code):
         return False
 
 
-def get_unique_categories():
+def get_unique_categories(userid):
     conn = sqlite3.connect('barcode_data.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT DISTINCT category FROM products")
+    cursor.execute("SELECT DISTINCT Category FROM products WHERE UserID=?", (userid,))
     result = cursor.fetchall()
     conn.close()
     categories = [r[0] for r in result]
@@ -151,7 +177,7 @@ def get_unique_categories():
 
 def create_user_database():
     # Prompt the user for a database name
-    dbname = 'user_data'
+    dbname = 'barcode_data'
 
     # Create a connection to the database
     conn = sqlite3.connect(dbname + ".db")
@@ -160,13 +186,13 @@ def create_user_database():
     cursor = conn.cursor()
 
     # Create a table with three columns
-    cursor.execute('''CREATE TABLE IF NOT EXISTS users
+    cursor.execute('''CREATE TABLE IF NOT EXISTS 'users'
                    (username TEXT PRIMARY KEY, 
                     password TEXT,
                     firstname TEXT,
                     lastname TEXT,
                     email TEXT, 
-                    userid TEXT UNIQUE )''')
+                    userid TEXT UNIQUE)''')
 
     # Commit the table creation
     conn.commit()
@@ -180,20 +206,56 @@ def create_user_database():
 
 def add_user(username, password, first_name, last_name, email):
     # create a connection to the database
-    conn = sqlite3.connect('user_data.db')
-
+    conn = sqlite3.connect('barcode_data.db')
+    result = True
     # create a cursor object
     c = conn.cursor()
+    while result:
+        userid = str(random())
+        c.execute('''SELECT userid FROM users WHERE userid=?''', (userid,))
+        result = c.fetchone()
 
     # insert the new user into the users table
-    c.execute("INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?,?,?,?)",
-              (username, password, first_name, last_name, email))
+    c.execute('''INSERT INTO users (username, password, firstname, lastname, email, userid) VALUES (?, ?,?,?,?, ?)''',
+              (username, password, first_name, last_name, email, userid))
 
     # commit changes to the database and close the connection
     conn.commit()
     conn.close()
+    return userid
+
+
+def login(username, password):
+    # create a connection to the database
+    conn = sqlite3.connect('barcode_data.db')
+
+    c = conn.cursor()
+    c.execute('''SELECT username, password FROM users WHERE username=?''', (username,))
+    result = c.fetchall()
+    if result:
+        username_result = (result[0][0] == username)
+        password_result = (result[0][1] == password)
+        c.execute('''SELECT userid FROM users WHERE username=?''', (username,))
+        result = c.fetchall()[0][0]
+
+        # Commit the table creation
+        conn.commit()
+
+        # Close the connection
+        conn.close()
+
+        return username_result, password_result, result
+
+    # Commit the table creation
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+    return False, False, 0
 
 
 if __name__ == "__main__":
-    # get_unique_categories()
+    create_user_database()
     create_database()
+    login('Rashmars', 'Rasheed321!')
+    get_unique_categories()

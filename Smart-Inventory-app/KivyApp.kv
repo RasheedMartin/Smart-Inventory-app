@@ -191,18 +191,20 @@ WindowManager:
                 color: 'white'
                 font_name: "Roboto-Bold"
             TextInput:
-                id: username
+                id: username_login
                 multiline: False
                 font_size: '16dp'
+                text: 'Rashmars'
             Label:
                 text: "Password"
                 font_size: '20dp'
                 color: 'white'
                 font_name: "Roboto-Bold"
             TextInput:
-                id: password_text
+                id: password_login
                 multiline: False
                 font_size: '16dp'
+                text: 'Rasheed123'
                 password: True
                 password_mask: '*'
         GridLayout:
@@ -256,6 +258,7 @@ WindowManager:
             on_release:
                 root.manager.transition.direction = 'left'
                 root.on_logout_button()
+
     BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
@@ -263,7 +266,7 @@ WindowManager:
 
 
 		Label:
-			text: "Smart Inventory\n\nManagement App"
+			id: welcome
 			font_size: '25dp'
 			color: 'white'
 			font_name: "Roboto-Bold"
@@ -463,12 +466,14 @@ WindowManager:
                 background_color: 'red'
                 color: 'white'
                 on_release:
-                    root.category = root.manager.get_screen("creation").category
                     root.barcode_data = root.manager.get_screen("product").barcode_data
                     root.on_release_button()
 
+
 <SelectionWindow>:
     name: "selection"
+
+    __safe_id: [drop_content.__self__]
     canvas.before:
         Rectangle:
             pos: self.pos
@@ -506,27 +511,37 @@ WindowManager:
                 id: drop_cat_menu
                 text: 'Select List'
                 size_hint_y: None
+                background_color: 'red'
+                color: 'white'
                 height: 44
                 on_parent: drop_content.dismiss()
                 on_release: drop_content.open(self)
-            DropDown:
+
+            CustomDropDown:
                 id: drop_content
                 # on_parent: self.dismiss()
+                bar_width: 10
+                effect_cls: "ScrollEffect"
+                scroll_type: ['bars']
+                bar_color: [1, 0, 0, 1]     # red color
+                bar_inactive_color: [0, 0, 1, 1]    # blue color
+                max_height: 120
                 on_select:
                     drop_content.text = f'{args[1]}'
+                    root.manager.category = drop_content.text
                     root.manager.current = 'edit'
-                max_height: 120
+
+
 
         GridLayout:
-            cols:2
+            cols: 1
+            rows: 1
             padding: [50, 55]
 
             Button:
-                text: "Submit"
-                # on_release: root.manager.current = 'main'
-
-            Button:
                 text: "Back"
+                background_color: 'red'
+                color: 'white'
                 on_release:
                     root.manager.transition.direction = 'right'
                     root.manager.current = 'main'
@@ -590,7 +605,6 @@ WindowManager:
                 color: 'white'
                 padding: [0, 50]
                 on_release:
-                    root.category = root.manager.get_screen("creation").category
                     root.on_release_button()
 
         GridLayout:
@@ -624,29 +638,98 @@ WindowManager:
 
 <EditWindow>
     name: "edit"
+    __safe_id: [new_rv.__self__]
     canvas.before:
         Rectangle:
             pos: self.pos
             size: self.size
             source: 'images/black_background_app.jpg'
-    RelativeLayout:
-        size_hint: None, None
-        size: 120, 50
-        pos_hint: {'right': 1, 'top': 1}
-        Button:
-            text: "Logout"
-            font_size: '25dp'
-            font_name: "Roboto-Bold"
-            size_hint: (1.12, 1.1)
-            background_color: 'red'
-            color: 'white'
-            on_release:
-                root.manager.transition.direction = 'left'
-                root.on_logout_button()
-    BoxLayout:
-		orientation: "vertical"
-		size: root.width, root.height
-		padding: [0, 50]
+    GridLayout:
+        rows: 4
+        cols: 1
+        RelativeLayout:
+            size_hint: None, None
+            size: 120, 50
+            pos_hint: {'right': 1, 'top': 1}
+            padding: [0, 50]
+            Button:
+                text: "Logout"
+                font_size: '25dp'
+                font_name: "Roboto-Bold"
+                size_hint: (1.12, 1.1)
+                background_color: 'red'
+                color: 'white'
+                on_release:
+                    root.manager.transition.direction = 'left'
+                    root.on_logout_button()
+        GridLayout:
+            cols: 1
+            rows: 1
+            size_hint_y: .1
+            Label:
+                text: root.manager.category
+                font_size: 36
+                font_name: 'Roboto-Bold'
+        GridLayout:
+            id: rv
+            cols: 1
+            rows: 1
+
+#            size_hint: 1, None
+            size_hint_y: .7
+            RV:
+                id: new_rv
+        GridLayout:
+            cols: 4
+            rows: 1
+            size_hint_y: .2
+            Button:
+                text: 'Back'
+                background_color: 'red'
+                id: back
+                on_release: root.manager.current = "main"
+            Button:
+                text: 'Delete'
+            Button:
+                text: 'Add'
+            Button:
+                text: 'Edit'
+                id: edit
+
+
+
+<SelectableLabel>:
+    id: label_id
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.0, 0.9, .1, .3) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    font_size: 12
+
+<RV>:
+    viewclass: 'SelectableLabel'
+    __safe_id: [child_rv.__self__]
+    bar_width: 16
+    do_scroll_x: True
+    do_scroll_y: True
+    SelectableRecycleBoxLayout:
+        id: child_rv
+        default_size: dp(1000), dp(56)
+        default_size_hint: None, None
+        size_hint_y: None
+        size_hint_x: None
+        pos_hint_y: None
+        pos_hint_x: None
+        height: self.minimum_height
+        width: self.minimum_width
+        orientation: 'vertical'
+        multiselect: False
+        touch_multiselect: False
+
+
 
 
 <ErrorPopup>:
@@ -705,6 +788,31 @@ WindowManager:
         orientation: 'vertical'
         Label:
             text: "This UPC already exists"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
+
+<UsernameErrorPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Username does not exists"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: username
+            text: "This Username already exists"
+        Button:
+            text: "Close"
+            on_press: root.dismiss()
+
+<PasswordErrorPopup>:
+    size_hint: .5 , .5
+    auto_dismiss: False
+    title: "Password was wrong"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "This Password is incorrect"
         Button:
             text: "Close"
             on_press: root.dismiss()
