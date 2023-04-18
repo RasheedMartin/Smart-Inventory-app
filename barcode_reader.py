@@ -410,7 +410,88 @@ def Print_least_expensive():
     hi = df.sort_values(by=['Price'])
     print( hi['Price'].iloc[0])
 
+def Print_most_expensive():
+    conn = sqlite3.connect("barcode_data.db")
 
+    cursor = conn.cursor()
+
+    result = cursor.fetchall()
+    sql_query = pd.read_sql_query ('''
+                                    SELECT
+                                    *
+                                    FROM products
+                                    ''', conn)
+
+    df = pd.DataFrame(sql_query)
+    hi = df.sort_values(by=['Price'])
+    print(hi['Price'].iloc[-1])
+ 
+   
+def Print_least_expensive():
+    conn = sqlite3.connect("barcode_data.db")
+
+    cursor = conn.cursor()
+
+    result = cursor.fetchall()
+    sql_query = pd.read_sql_query ('''
+                                    SELECT
+                                    *
+                                    FROM products
+                                    ''', conn)
+
+    df = pd.DataFrame(sql_query)
+    hi = df.sort_values(by=['Price'])
+    print( hi['Price'].iloc[0])
+   
+
+def Price_change(upc_code, current_price):
+    url = "https://api.barcodespider.com/v1/lookup"
+    querystring = {"upc": upc_code}
+
+    headers = {
+        'token': "d970f9f75b5fb1d6c3a5",
+        'Host': "api.barcodespider.com",
+        'Accept-Encoding': "gzip, deflate",
+        'Connection': "keep-alive",
+        'cache-control': "no-cache"
+    }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    data = response.json()
+
+    price = response.text
+
+    data_dict = json.loads(price)
+    price2 = data_dict['Stores'][0]['price']
+    price = float(price2)
+    
+    if price > current_price:
+        x= abs(current_price - price) / ((current_price + price) / 2) * 100
+        print(f'Price increase by {x}%')
+    if price < current_price:
+        y= abs(current_price - price) / ((current_price + price) / 2) * 100
+        print(f'Price increase by {y}%')
+    if price == current_price:
+        print('Price is the same')
+    
+    
+    
+def average_price():
+    conn = sqlite3.connect("barcode_data.db")
+
+    cursor = conn.cursor()
+
+    result = cursor.fetchall()
+    sql_query = pd.read_sql_query ('''
+                                    SELECT
+                                    *
+                                    FROM products
+                                    ''', conn)
+
+    df = pd.DataFrame(sql_query)
+    price_avg = df['Price'].mean()
+    print(f'Price average is {price_avg}')
+    return price_avg
 
 if __name__ == "__main__":
     create_user_database()
