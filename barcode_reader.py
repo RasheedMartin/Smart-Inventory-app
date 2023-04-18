@@ -7,6 +7,7 @@ import json
 import sqlite3
 from random import random
 import string
+import pandas as pd
 
 
 # Define a function to capture video from your camera and process each frame
@@ -376,7 +377,46 @@ def verify_username(username):
     return result
 
 
+def Print_most_expensive():
+    conn = sqlite3.connect("barcode_data.db")
+
+    cursor = conn.cursor()
+
+    result = cursor.fetchall()
+    sql_query = pd.read_sql_query ('''
+                                    SELECT
+                                    *
+                                    FROM products
+                                    ''', conn)
+
+    df = pd.DataFrame(sql_query)
+    hi = df.sort_values(by=['Price'])
+    print( hi['Price'].iloc[-1])
+ 
+   
+def Print_least_expensive():
+    conn = sqlite3.connect("barcode_data.db")
+
+    cursor = conn.cursor()
+
+    result = cursor.fetchall()
+    sql_query = pd.read_sql_query ('''
+                                    SELECT
+                                    *
+                                    FROM products
+                                    ''', conn)
+
+    df = pd.DataFrame(sql_query)
+    hi = df.sort_values(by=['Price'])
+    print( hi['Price'].iloc[0])
+
+
+
 if __name__ == "__main__":
     create_user_database()
     create_database()
     print(get_email(''))
+
+
+#Bigsemour678 or BigSemour678
+#Ryannaraine07!
