@@ -10,10 +10,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.recycleview import RecycleView
 from kivy.uix.label import Label
 from kivy.clock import Clock
-from barcode_reader import scan_barcodes, \
-    get_price, create_database, update_database, get_unique_categories, \
-    checking, create_user_database, add_user, login, get_name, get_products, \
-    get_password, get_username, get_email, verify_password, verify_username
+from barcode_reader import *
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -29,12 +26,35 @@ from kivy.graphics import Color, Rectangle
 # from kivy.uix.image import AsyncImage
 
 # Window.clearcolor = (0.5, 0.5, 0.5, 1)
-# Window.size = (400, 400)
-Window.minimum_width, Window.minimum_height = (400, 400)
+Window.size = (500, 600)
+Window.minimum_width, Window.minimum_height = (500, 500)
+Window.maximum_width, Window.maximum_height = (500, 500)
 
 
 class HomeWindow(Screen):
     pass
+
+
+class ResetPasswordWindow(Screen):
+    def on_release_button(self):
+        if verify_password(self.ids.new_password.text):
+            if self.ids.new_password.text == self.ids.confirm_password.text:
+                # Change the password
+                result = change_password(self.ids.new_password.text, self.manager.userid)
+                # This means that it worked
+                if result:
+                    # Clear the userid before returning to Login
+                    self.manager.userid = ''
+                    # Return to Login
+                    self.manager.current = "login"
+                else:
+                    SimilarTooOldPasswordErrorPopup().open()
+            else:
+                self.ids.new_password.text = ''
+                self.ids.confirm_password.text = ''
+                PasswordDonotMatchErrorPopup().open()
+        else:
+            SimplePasswordErrorPopup().open()
 
 
 class ForgotPasswordWindow(Screen):
@@ -44,9 +64,11 @@ class ForgotPasswordWindow(Screen):
 
         username_result, email_result, result = get_password(username, email)
         if username_result and email_result:
-            self.ids.get_password.text = result
+            self.ids.username_vertification.text = ''
+            self.ids.email_vertification.text = ''
+            self.manager.userid = result
+            self.manager.current = 'reset'
         else:
-            self.ids.get_password.text = ''
             ForgotPasswordErrorPopup().open()
 
 
@@ -146,7 +168,46 @@ class LoginWindow(Screen):
             self.manager.get_screen('main').ids.welcome.text = f'Welcome Back ' \
                                                                f'{firstname} ' \
                                                                f'{lastname}! '
-            self.manager.current = 'main'
+            self.manager.get_screen('mainmain').ids.welcome.text = f'Welcome Back ' \
+                                                                   f'{firstname} ' \
+                                                                   f'{lastname}! '
+            self.manager.current = 'mainmain'
+
+
+class MainmainWindow(Screen):
+    checks = []
+    action = ' '
+
+    def checkbox_click(self, instance, value, topping):
+        if value:
+            MainmainWindow.checks.append(topping)
+            tops = ''
+            for x in MainmainWindow.checks:
+                tops = f'{tops} {x}'
+            MainmainWindow.action = x
+
+        else:
+            MainmainWindow.checks.remove(topping)
+            tops = ''
+            for x in MainmainWindow.checks:
+                tops = f'{tops} {x}'
+
+    def on_press_button(self):
+
+        if MainmainWindow.action == 'Inventory Mode':
+            self.manager.current = "main"
+            pass
+        elif MainmainWindow.action == "Transaction Mode":
+            # Feature to be implemented in later code
+            # self.manager.current = "transaction"
+            pass
+        else:
+            pass
+
+    def on_logout_button(self):
+        self.manager.userid = ''
+        self.manager.category = ''
+        self.manager.current = 'home'
 
 
 class MainWindow(Screen):
@@ -167,6 +228,10 @@ class MainWindow(Screen):
             for x in MainWindow.checks:
                 tops = f'{tops} {x}'
 
+    def clear(self):
+        MainWindow.action = ''
+        self.manager.current = 'mainmain'
+
     def on_press_button(self):
 
         if MainWindow.action == 'Create List':
@@ -175,7 +240,8 @@ class MainWindow(Screen):
         elif MainWindow.action == "Edit List":
             self.manager.current = "selection"
             pass
-        elif MainWindow.action == "Stock Prediction":
+        elif MainWindow.action == "Data Analysis":
+            self.manager.current = "selection"
             pass
         else:
             pass
@@ -292,10 +358,26 @@ class SelectionWindow(Screen):
             btn.bind(on_release=lambda btn_obj: drop_down.select(btn_obj.text))
             drop_down.add_widget(btn)
 
+    def select_screen(self):
+        # First access the desired screen
+        main = self.manager.get_screen('main')
+        if main.action == "Edit List":
+            self.manager.current = "edit"
+        elif main.action == "Data Analysis":
+            data = self.manager.get_screen('data')
+            data.ids.most_expensive.text = print_most_expensive(self.manager.category)
+            data.ids.least_expensive.text = print_least_expensive(self.manager.category)
+            data.ids.average_price.text = average_price(self.manager.category)
+            self.manager.current = "data"
+
     def on_logout_button(self):
         self.manager.userid = ''
         self.manager.category = ''
         self.manager.current = 'home'
+
+
+class DataWindow(Screen):
+    pass
 
 
 class EditWindow(Screen):
@@ -311,6 +393,11 @@ class EditWindow(Screen):
         self.manager.userid = ''
         self.manager.category = ''
         self.manager.current = 'home'
+
+    def delete(self):
+        if self.manager.selection:
+            DeleteConfirmationPopup().open()
+
 
 
 class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
@@ -397,10 +484,16 @@ class SelectableLabel(RecycleDataViewBehavior, Label):
         ''' Respond to the selection of items in the view. '''
         self.selected = is_selected
         self.rv_data = rv.data
+        rv.data[index]['selected'] = self.selected
+
         if is_selected:
+            root = App.get_running_app().root
             print("selection changed to {0}".format(rv.data[index]))
+            root.selection = f"{rv.data[index]['text']}"
         else:
+            root = App.get_running_app().root
             print("selection removed for {0}".format(rv.data[index]))
+            root.selection = ''
 
 
 class RV(RecycleView):
@@ -479,19 +572,26 @@ class UsernameTakenErrorPopup(Popup):
     pass
 
 
+class PasswordDonotMatchErrorPopup(Popup):
+    pass
+
+
+class SimilarTooOldPasswordErrorPopup(Popup):
+    pass
+
+
+class DeleteConfirmationPopup(Popup):
+    def delete_method(self):
+        root = App.get_running_app().root
+        delete(root.userid, root.category, root.selection)
+        self.dismiss()
+        root.current = 'selection'
+
+
 class WindowManager(ScreenManager):
     userid = StringProperty('')
     category = StringProperty('')
-
-    def pass_info(self, barcode_data, category):
-        self.add_widget(ManualWindow(barcode_data=barcode_data,
-                                     category=category))
-
-    def pass_categ(self, category):
-        self.add_widget(ProductWindow(category=category))
-
-    def pass_name(self, name):
-        self.add_widget(MainWindow(firstname=name))
+    selection = StringProperty('')
 
 
 # Designate Our .kv design file

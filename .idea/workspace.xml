@@ -208,7 +208,7 @@
       <workItem from="1680565623605" duration="6426000" />
       <workItem from="1680573198339" duration="142000" />
       <workItem from="1680573564833" duration="65071000" />
-      <workItem from="1682206198453" duration="465000" />
+      <workItem from="1682206198453" duration="28247000" />
     </task>
     <task id="LOCAL-00002" summary="Finally connected">
       <created>1678045686183</created>
@@ -384,9 +384,9 @@
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1676737756872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode.coverage" NAME="barcode Coverage Results" MODIFIED="1678041062201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1679368385412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/barcode_data_db$barcode_reader.coverage" NAME="barcode_reader Coverage Results" MODIFIED="1681694474486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/barcode_data_db$barcode_reader.coverage" NAME="barcode_reader Coverage Results" MODIFIED="1682293274364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$webscraping.coverage" NAME="webscraping Coverage Results" MODIFIED="1676841968195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/barcode_data_db$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1682206294584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/barcode_data_db$KivyApp.coverage" NAME="KivyApp Coverage Results" MODIFIED="1682298090080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Smart_Inventory_app$barcode_reader.coverage" NAME="barcode_reader Coverage Results" MODIFIED="1679367667534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

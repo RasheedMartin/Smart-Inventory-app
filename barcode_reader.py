@@ -153,8 +153,8 @@ def update_database(name, barcode, price, category, userid):
 
     cursor = conn.cursor()
 
-    cursor.execute('''INSERT INTO 'products' (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)''',
-                   (barcode, name, price, category.strip(), userid))
+    cursor.execute('''INSERT INTO products (UPC, Name, Price, Category, UserID) VALUES (?, ?, ?, ?,?)''',
+                   (barcode, name.split(',', 1)[0], price, category.strip(), userid))
     # Commit the changes
     conn.commit()
 
@@ -261,7 +261,7 @@ def get_password(username, email):
     if result:
         username_result = (result[0][0] == username)
         email_result = (result[0][1] == email)
-        c.execute('''SELECT password FROM users WHERE username=? AND email=?''', (username, email))
+        c.execute('''SELECT userid FROM users WHERE username=? AND email=?''', (username, email))
         result = c.fetchall()[0][0]
 
         # Commit the table creation
@@ -354,6 +354,47 @@ def verify_password(password):
         return True
 
 
+def delete(userid, category, name):
+    # create a connection to the database
+    conn = sqlite3.connect('barcode_data.db')
+
+    c = conn.cursor()
+    c.execute('''DELETE FROM products WHERE UserID=? AND Name=? AND Category=?''', (userid, name, category))
+
+    # Commit the table creation
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+
+
+def change_password(password, userid):
+    # create a connection to the database
+    conn = sqlite3.connect('barcode_data.db')
+
+    c = conn.cursor()
+    c.execute('''SELECT password FROM users WHERE userid=?''', (userid,))
+
+    result = c.fetchall()[0][0]
+    if result != password:
+        c.execute('''UPDATE users SET password=? WHERE userid=?''', (password, userid))
+
+        # Commit the table creation
+        conn.commit()
+
+        # Close the connection
+        conn.close()
+
+        return True
+    # Commit the table creation
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+
+    return False
+
+
 def verify_username(username):
     # create a connection to the database
     conn = sqlite3.connect('barcode_data.db')
@@ -377,74 +418,43 @@ def verify_username(username):
     return result
 
 
-def Print_most_expensive():
+########## DATA ALGORITHM STUFF ####################
+
+def print_most_expensive(category):
     conn = sqlite3.connect("barcode_data.db")
 
     cursor = conn.cursor()
 
     result = cursor.fetchall()
-    sql_query = pd.read_sql_query ('''
+    sql_query = pd.read_sql_query('''
                                     SELECT
                                     *
-                                    FROM products
-                                    ''', conn)
+                                    FROM products WHERE Category=?
+                                    ''', params=(category,), con=conn)
 
     df = pd.DataFrame(sql_query)
     hi = df.sort_values(by=['Price'])
-    print( hi['Price'].iloc[-1])
- 
-   
-def Print_least_expensive():
+    return f"Name: {hi['Name'].iloc[-1].split(',', 1)[0]} \n Price: ${hi['Price'].iloc[-1]}"
+
+
+def print_least_expensive(category):
     conn = sqlite3.connect("barcode_data.db")
 
     cursor = conn.cursor()
 
     result = cursor.fetchall()
-    sql_query = pd.read_sql_query ('''
+    sql_query = pd.read_sql_query('''
                                     SELECT
                                     *
-                                    FROM products
-                                    ''', conn)
+                                    FROM products WHERE Category=?
+                                    ''', params=(category,), con=conn)
 
     df = pd.DataFrame(sql_query)
     hi = df.sort_values(by=['Price'])
-    print( hi['Price'].iloc[0])
+    return f"Name: {hi['Name'].iloc[0].split(',', 1)[0]} \nPrice: ${hi['Price'].iloc[0]}"
 
-def Print_most_expensive():
-    conn = sqlite3.connect("barcode_data.db")
 
-    cursor = conn.cursor()
-
-    result = cursor.fetchall()
-    sql_query = pd.read_sql_query ('''
-                                    SELECT
-                                    *
-                                    FROM products
-                                    ''', conn)
-
-    df = pd.DataFrame(sql_query)
-    hi = df.sort_values(by=['Price'])
-    print(hi['Price'].iloc[-1])
- 
-   
-def Print_least_expensive():
-    conn = sqlite3.connect("barcode_data.db")
-
-    cursor = conn.cursor()
-
-    result = cursor.fetchall()
-    sql_query = pd.read_sql_query ('''
-                                    SELECT
-                                    *
-                                    FROM products
-                                    ''', conn)
-
-    df = pd.DataFrame(sql_query)
-    hi = df.sort_values(by=['Price'])
-    print( hi['Price'].iloc[0])
-   
-
-def Price_change(upc_code, current_price):
+def price_change(upc_code, current_price):
     url = "https://api.barcodespider.com/v1/lookup"
     querystring = {"upc": upc_code}
 
@@ -464,40 +474,38 @@ def Price_change(upc_code, current_price):
     data_dict = json.loads(price)
     price2 = data_dict['Stores'][0]['price']
     price = float(price2)
-    
+
     if price > current_price:
-        x= abs(current_price - price) / ((current_price + price) / 2) * 100
-        print(f'Price increase by {x}%')
-    if price < current_price:
-        y= abs(current_price - price) / ((current_price + price) / 2) * 100
-        print(f'Price increase by {y}%')
-    if price == current_price:
-        print('Price is the same')
-    
-    
-    
-def average_price():
+        x = abs(current_price - price) / ((current_price + price) / 2) * 100
+        return f'Price increase by {x}%'
+    elif price < current_price:
+        y = abs(current_price - price) / ((current_price + price) / 2) * 100
+        return f'Price decrease by {y}%'
+    elif price == current_price:
+        return 'No current changes in price'
+
+
+def average_price(category):
     conn = sqlite3.connect("barcode_data.db")
 
     cursor = conn.cursor()
 
     result = cursor.fetchall()
-    sql_query = pd.read_sql_query ('''
+    sql_query = pd.read_sql_query('''
                                     SELECT
                                     *
-                                    FROM products
-                                    ''', conn)
+                                    FROM products WHERE Category=?
+                                    ''', params=(category,), con=conn)
 
     df = pd.DataFrame(sql_query)
     price_avg = df['Price'].mean()
-    print(f'Price average is {price_avg}')
-    return price_avg
+    return f'Category: {category} \n Price Average: ${price_avg}'
+
 
 if __name__ == "__main__":
     create_user_database()
     create_database()
-    print(get_email(''))
-
-
-#Bigsemour678 or BigSemour678
-#Ryannaraine07!
+    delete('0.3150896063268679','Packing Lists', 'Scotch(R) Magic(TM) Tape in Dispensers, 3/4in. x 600in, Pack of 2')
+# Bigsemour678 or BigSemour678
+# Ryannaraine07!
+# 0.3150896063268679
