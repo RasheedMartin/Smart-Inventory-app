@@ -47,20 +47,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fresh\Desktop\Repositories\Smart Inventory App\Smart-Inventory-app" />
       <recent name="C:\Users\fresh\PycharmProjects\Smart-Inventory-app\Smart-Inventory-app\images" />
       <recent name="C:\Users\fresh\PycharmProjects\Smart-Inventory-app" />
       <recent name="C:\Users\fresh\PycharmProjects\Smart-Inventory-app\Smart-Inventory-app" />
@@ -80,7 +81,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/KivyApp.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\fresh\Desktop\Repositories\Smart Inventory App\Smart-Inventory-app\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -209,6 +210,7 @@
       <workItem from="1680573198339" duration="142000" />
       <workItem from="1680573564833" duration="65071000" />
       <workItem from="1682206198453" duration="31109000" />
+      <workItem from="1682792860594" duration="133000" />
     </task>
     <task id="LOCAL-00002" summary="Finally connected">
       <created>1678045686183</created>
@@ -367,6 +369,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="Added in the webscraping file" />
     <MESSAGE value="Finally connected" />
